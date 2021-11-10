@@ -158,11 +158,33 @@ public class Movement : MonoBehaviour
 
     private class PlayerMovementState : PlayerAbstractState
     {
+        private bool doesCollide()
+        {
+            bool result = false;
+
+            if(Physics.CheckSphere(context.ledgeChecker.position, 0.15f, context.ledgeLayer))
+            {
+                Collider[] colliders = Physics.OverlapSphere(context.ledgeChecker.position, 0.15f, context.ledgeLayer);
+                foreach(Collider c in colliders)
+                {
+                    if (context.model.rotation.y > 0 && c.name == "LeftLedge")
+                    {
+                        result = true;
+                    }
+                    if(context.model.rotation.y < 0 && c.name == "RightLedge")
+                    {
+                        result = true;
+                    }
+                }
+            }
+            return result;
+        }
+
         public override void Jump()
         {
             if (Input.GetButtonDown("Jump"))
             {
-                if (Physics.CheckSphere(context.ledgeChecker.position, 0.15f, context.ledgeLayer))
+                if (doesCollide())
                 {
                     context.TransitionTo(new PlayerMovementJumpState());
                 }
