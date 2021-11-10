@@ -191,16 +191,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1566795134}
   Movespeed: 5
-  JumpForce: 8
   gravity: -1
-  jumpDelay: 1
-  padding: 0.5
   groundCheck: {fileID: 243473417}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  ledgeLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  ledgeChecker: {fileID: 0}
   animator: {fileID: 6348782717645721779}
   model: {fileID: 1079532307835275977}
+  deltaX: 0
 --- !u!1001 &680603845481016610
 PrefabInstance:
   m_ObjectHideFlags: 0
