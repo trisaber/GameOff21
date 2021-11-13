@@ -120,13 +120,13 @@ public class Movement : MonoBehaviour
             Collider[] colliders = Physics.OverlapSphere(context.ledgeChecker.position, 2 /*0.15f * (1 + 4 * context.animator.GetFloat("speed"))*/, context.ledgeLayer);
             foreach(Collider c in colliders)
             {
-                if (context.model.rotation.y > 0 && c.name == "LeftLedge")
+                if (context.model.rotation.y > 0 && c.name == "LeftLedge" && context.model.position.x <= (c.transform.position.x + 0.15f))
                 {
                     // Debug.Log("Right ledge grabbed. pos.x: " + c.transform.position.x + ", diff x: " + (c.transform.position.x - context.ledgeChecker.position.x));
                     // Debug.Log("ledge checker.x: " + context.ledgeChecker.transform.position.x + ", pos.x: " + context.transform.position.x);
                     return c;
                 }
-                if(context.model.rotation.y < 0 && c.name == "RightLedge")
+                if(context.model.rotation.y < 0 && c.name == "RightLedge"&& context.model.position.x >= (c.transform.position.x - 0.15f))
                 {
                     // Debug.Log("Right ledge grabbed. pos.x: " + c.transform.position.x + ", diff x: " + (c.transform.position.x - context.ledgeChecker.position.x));
                     // Debug.Log("ledge checker.x: " + context.ledgeChecker.transform.position.x + ", pos.x: " + context.transform.position.x);
