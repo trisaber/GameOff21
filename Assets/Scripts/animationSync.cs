@@ -9,11 +9,15 @@ public class animationSync : MonoBehaviour
     {
         
     }
-    public void ClimbUp()
+    public void ClimbedUp()
     {
-        
-        player.Climbed();
+        // player.Climbing();
+        player.state.EndOfAnimation();
+    }
 
+    public void JumpMissedGrab()
+    {
+        player.state.EndOfAnimation();
     }
 
     // Update is called once per frame
