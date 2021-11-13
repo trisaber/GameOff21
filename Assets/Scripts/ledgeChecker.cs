@@ -6,7 +6,7 @@ public class ledgeChecker : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        transform.parent.GetComponent<Movement>().Hanged();
+        // transform.parent.GetComponent<Movement>().Hanged();
         Debug.Log("dokundum");
     }
 }
