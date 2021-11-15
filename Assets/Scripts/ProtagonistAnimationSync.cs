@@ -2,24 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class animationSync : MonoBehaviour
+public class ProtagonistAnimationSync : MonoBehaviour
 {
-    public Movement player;
+    public Protagonist player;
     void Start()
     {
         
     }
-    public void ClimbedUp()
+    public void AnimationEnd(int animationId)
     {
+        Debug.Log("ProtagonistAnimationSync.AnimationEnd: " + (Protagonist.ProtagonistActions)animationId);
         // player.Climbing();
         player.state.EndOfAnimation();
     }
-
-    public void JumpMissedGrab()
-    {
-        player.state.EndOfAnimation();
-    }
-
     // Update is called once per frame
     void Update()
     {
