@@ -22,7 +22,7 @@ public class Collector : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1")&&ToPick!=null)
         {
             inventoryUI.PickUp(ToPick);
         }
