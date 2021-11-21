@@ -1642,7 +1642,7 @@ CharacterController:
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1466895808
@@ -1658,20 +1658,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1466895807}
-  Movespeed: 1
+  moveSpeed: 0
   gravity: -20
-  groundCheck: {fileID: 258835865}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
   ledgeLayer:
     serializedVersion: 2
     m_Bits: 512
+  groundCheck: {fileID: 258835865}
   ledgeChecker: {fileID: 1811386559}
   animator: {fileID: 56531567}
   model: {fileID: 56531564}
-  deltaX: 0
-  actionEnum: 0
+  jumpingCollider: {fileID: 0}
 --- !u!4 &1466895809
 Transform:
   m_ObjectHideFlags: 0
