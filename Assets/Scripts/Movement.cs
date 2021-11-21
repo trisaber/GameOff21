@@ -27,9 +27,10 @@ public class Movement : MonoBehaviour
     void Start()
     {
         TransitionTo(new PlayerMovementState());
+        controller.enabled = false;
     }
 
-    void FixedUpdate()
+    void FixedUpdate2()
     {
         state.Jump();
         state.Move();
