@@ -12,14 +12,11 @@ public class EnviromentAudio : MonoBehaviour
         audioSource.loop = false;
         randomPlay();
     }
-
     void  randomPlay()
     {
-
             StartCoroutine(playAudio());
     }
     IEnumerator playAudio()
-
     {
         audioSource.clip = clips[Random.Range(0, clips.Length)];
         audioSource.Play();
