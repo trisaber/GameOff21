@@ -755,6 +755,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &402655930
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402655925}
+  m_Enabled: 1
 --- !u!1001 &450651421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1193,7 +1201,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   m_Layer: 0
@@ -1203,14 +1210,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1218,14 +1217,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f63f3518702a5e4895b6be1fb89359d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 767948647}
-  smoothSpeed: 0.6
-  offset: {x: 0, y: 5, z: -5}
+  gameCam: {fileID: 1311827998}
+  zoomCam: {fileID: 1248005318}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1811,23 +1809,23 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.02
-      value: 0.5
-      inSlope: -25.00996
-      outSlope: -25.00996
+      time: 0.005815048
+      value: 0.8898773
+      inSlope: -0.22876127
+      outSlope: -0.22876127
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 1
     - serializedVersion: 3
-      time: 0.025542296
-      value: 0.7138748
-      inSlope: 13.825954
-      outSlope: 13.825954
+      time: 0.0539122
+      value: 0.90532684
+      inSlope: -0.0019848917
+      outSlope: -0.0019848917
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.59589845
+      outWeight: 1
     - serializedVersion: 3
       time: 0.084285505
       value: 0.8730774
@@ -2273,7 +2271,7 @@ GameObject:
   - component: {fileID: 1248005319}
   - component: {fileID: 1248005318}
   m_Layer: 0
-  m_Name: CM vcam2
+  m_Name: ZoomCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2295,13 +2293,13 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: -25
+  m_Priority: 5
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 767948647}
   m_Follow: {fileID: 767948647}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 1
+    OrthographicSize: 1.26
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -2321,8 +2319,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1248005317}
-  m_LocalRotation: {x: -0.019919325, y: -1e-45, z: 0, w: 0.9998016}
-  m_LocalPosition: {x: 2, y: -1.87, z: -10}
+  m_LocalRotation: {x: 0.19960709, y: 0, z: 0, w: 0.97987604}
+  m_LocalPosition: {x: 2, y: 13.13, z: -35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1762390138}
@@ -2444,7 +2442,7 @@ GameObject:
   - component: {fileID: 1311827999}
   - component: {fileID: 1311827998}
   m_Layer: 0
-  m_Name: CM vcam1
+  m_Name: GameCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2466,7 +2464,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 249
+  m_Priority: 6
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 767948647}
   m_Follow: {fileID: 767948647}
@@ -3242,7 +3240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0, z: -10}
+  m_FollowOffset: {x: 0, y: 15, z: -35}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -3270,12 +3268,12 @@ MonoBehaviour:
   m_HorizontalDamping: 0.5
   m_VerticalDamping: 0.5
   m_ScreenX: 0.5
-  m_ScreenY: 0.6999999
-  m_DeadZoneWidth: 0.765
-  m_DeadZoneHeight: 0.588
-  m_SoftZoneWidth: 0.91
-  m_SoftZoneHeight: 1.232
-  m_BiasX: 0.07400017
+  m_ScreenY: 0.545
+  m_DeadZoneWidth: 0.354
+  m_DeadZoneHeight: 0.168
+  m_SoftZoneWidth: 0.768
+  m_SoftZoneHeight: 0.557
+  m_BiasX: 0.07400003
   m_BiasY: 0
   m_CenterOnActivate: 1
 --- !u!114 &1762390141
