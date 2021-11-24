@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    public enum collectable
+    public enum collectable   //rename types as names of objects
     {
         CollectabeA,
         CollectabeB,
