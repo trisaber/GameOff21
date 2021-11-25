@@ -11,9 +11,9 @@ public class ProtagonistGenericState : ProtagonistStateBase
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        GetCharacterController(animator);
         this.animator = animator;
         protagonist.state = this;
-        GetCharacterController(animator);
 
         protagonist.moveSpeed = speed;
     }

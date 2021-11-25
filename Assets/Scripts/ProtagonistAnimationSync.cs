@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProtagonistAnimationSync : MonoBehaviour
 {
+    public string hey;
     public Protagonist player;
     void Start()
     {
@@ -19,7 +20,7 @@ public class ProtagonistAnimationSync : MonoBehaviour
 
     public void AnimationEnd(int animationId)
     {
-        //Debug.Log("ProtagonistAnimationSync.AnimationEnd: " + (Protagonist.ProtagonistActions)animationId);
+        Debug.Log(hey + " ProtagonistAnimationSync.AnimationEnd: " + animationId);
         player.state.EndOfAnimation();
     }
     // Update is called once per frame

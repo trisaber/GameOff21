@@ -10,9 +10,10 @@ public class ProtagonistCrouchState : ProtagonistStateBase
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        protagonist.state = this;
         GetCharacterController(animator);
         animator.SetFloat("speed", 0.0f);
+        protagonist.state = this;
+        protagonist.moveSpeed = 0.0f;
 
         Input.ResetInputAxes();
     }
@@ -63,15 +64,16 @@ public class ProtagonistCrouchState : ProtagonistStateBase
     void Move(Animator animator)
     {
         var horizontal = Input.GetAxis("Horizontal");
+        Debug.Log("Mathf.Abs(horizontal): " + Mathf.Abs(horizontal));
         if (Mathf.Abs(horizontal) >= 0.15f)
-    {
+        {
             protagonist.moveSpeed = walkSpeed;
             animator.SetFloat("speed", 1.0f, 0.15f, Time.deltaTime);
         }
         else
         {
             protagonist.moveSpeed = 0.0f;
-            animator.SetFloat("speed", transitionToIdle ? 0.5f : 0.0f, 0.2f, Time.deltaTime);
+            animator.SetFloat("speed", (transitionToIdle ? 0.0f : 0.5f), 0.2f, Time.deltaTime);
         }
 
     }

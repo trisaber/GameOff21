@@ -17,8 +17,8 @@ public class ProtagonistStateBase : StateMachineBehaviour
         MayaUkemi = 8,
     }
 
-    static protected CharacterController cc = null;
-    static protected Protagonist protagonist;
+    protected CharacterController cc = null;
+    protected Protagonist protagonist;
 
     protected CharacterController GetCharacterController(Animator animator)
     {
@@ -28,10 +28,8 @@ public class ProtagonistStateBase : StateMachineBehaviour
             protagonist = animator.GetComponentInParent<Protagonist>();
             if (protagonist == null || cc == null)
             {
-                
                 Application.Quit();
             }
-            Debug.Log("cc: " + cc + ", protagonist: " + protagonist);
         }
         return cc;
     }
@@ -42,5 +40,6 @@ public class ProtagonistStateBase : StateMachineBehaviour
     }
 
     // It is called when end frame of animation is reached.
-    public virtual void EndOfAnimation() {}
+    public virtual void EndOfAnimation() { }
+    public virtual void StartOfAnimation() { }
 }
