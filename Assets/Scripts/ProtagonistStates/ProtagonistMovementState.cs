@@ -6,6 +6,7 @@ public class ProtagonistMovementState : ProtagonistStateBase
 {
     [SerializeField] private float walkSpeed = 2.0f;
     [SerializeField] private float runSpeed = 3.0f;
+    [SerializeField] private float timeToRun = 3.0f;
     private float walkStart = 0.0f;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -14,6 +15,7 @@ public class ProtagonistMovementState : ProtagonistStateBase
         GetCharacterController(animator);
         animator.SetFloat("speed", 0.0f);
         protagonist.state = this;
+        animator.SetInteger("animationId", 0);
 
         Input.ResetInputAxes();
     }
@@ -72,7 +74,7 @@ public class ProtagonistMovementState : ProtagonistStateBase
                 walkStart = Time.time;
             }
 
-            if (Time.time - walkStart < 3.0f)
+            if (Time.time - walkStart < timeToRun)
             {
                 protagonist.moveSpeed = walkSpeed;
                 animator.SetFloat("speed", 0.5f, 0.1f, Time.deltaTime);

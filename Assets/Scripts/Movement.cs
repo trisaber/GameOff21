@@ -16,6 +16,7 @@ public class Movement : MonoBehaviour
     [SerializeField] LayerMask ledgeLayer;
     [SerializeField] Transform ledgeChecker;
 
+
     public Animator animator;
     public Transform model;
     public float deltaX;
@@ -37,7 +38,10 @@ public class Movement : MonoBehaviour
 
         controller.Move(direction);
         TransitionTo(state.nextState);
+
     }
+
+
 
     private void Move()
     {

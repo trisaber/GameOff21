@@ -8,9 +8,9 @@ public class ProtagonistClimbUpState : ProtagonistStateBase
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        GetCharacterController(animator);
         isClimbed = false;
         protagonist.state = this;
-        GetCharacterController(animator);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -31,6 +31,7 @@ public class ProtagonistClimbUpState : ProtagonistStateBase
 
     public override void EndOfAnimation()
     {
+        Debug.Log("ProtagonistClimbUpState.EndOfAnimation");
         isClimbed = true;
     }
 }
