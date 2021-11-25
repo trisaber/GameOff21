@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 6943430472261565988}
   - component: {fileID: 2826371537006302816}
   m_Layer: 9
-  m_Name: RightLedge (1)
+  m_Name: RightLedge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7347335602757051514}
   m_LocalRotation: {x: -0.49991122, y: -0.50008875, z: -0.49991408, w: -0.50008595}
-  m_LocalPosition: {x: 0, y: 0.079050496, z: -0.0005893633}
+  m_LocalPosition: {x: 0, y: -0.0009, z: -0.0006}
   m_LocalScale: {x: 0.00055214704, y: 0.0014813398, z: 0.01}
   m_Children: []
   m_Father: {fileID: 8161991147192169762}

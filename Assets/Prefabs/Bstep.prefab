@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8487516014747487335}
   - component: {fileID: 6334040494409027908}
   - component: {fileID: 7736252768548024759}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DummyPlane.012
   m_TagString: Untagged
   m_Icon: {fileID: 0}

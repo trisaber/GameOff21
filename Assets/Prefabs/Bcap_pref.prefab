@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 7195049562905599277}
   - component: {fileID: 8309814455686317813}
   - component: {fileID: 5595384807209168818}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NurbsPath.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 675089967228775008}
   - component: {fileID: 3993410820428847687}
   m_Layer: 9
-  m_Name: LeftLedge (1)
+  m_Name: LeftLedge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
