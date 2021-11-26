@@ -11,10 +11,13 @@ public class ProtagonistMovementState : ProtagonistStateBase
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        GOLog.Log();
+
         GetCharacterController(_animator);
         _animator.SetFloat("speed", 0.0f);
-        protagonist.state = this;
         _animator.SetInteger("animationId", 0);
+        protagonist.state = this;
+        protagonist.moveSpeed = 0.0f;
 
         Input.ResetInputAxes();
     }
@@ -22,6 +25,8 @@ public class ProtagonistMovementState : ProtagonistStateBase
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        GOLog.Log();
+
         if (Jump(_animator) == false && Crouch(_animator) == false)
         {
             Move(_animator);
@@ -31,6 +36,7 @@ public class ProtagonistMovementState : ProtagonistStateBase
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        GOLog.Log();
     }
 
     bool Crouch(Animator _animator)

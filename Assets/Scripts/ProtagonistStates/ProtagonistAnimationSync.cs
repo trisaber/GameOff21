@@ -17,7 +17,7 @@ public class ProtagonistAnimationSync : MonoBehaviour
     public void AnimationStart(int animationId)
     {
         //Debug.Log("ProtagonistAnimationSync.AnimationStart: " + (Protagonist.ProtagonistActions)animationId);
-        //player.state.StartOfAnimation((Protagonist.ProtagonistActions)animationId);
+        player.state.StartOfAnimation();
     }
 
     public void AnimationEnd(int animationId)

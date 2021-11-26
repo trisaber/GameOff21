@@ -39,11 +39,15 @@ public class Protagonist : MonoBehaviour
 
     private void Update()
     {
+        GOLog.Log();
         Move();
         controller.Move(direction);
     }
 
-    private void LateUpdate() { }
+    private void LateUpdate()
+    {
+        GOLog.Log();
+    }
 
     public Transform getLedgeChecker() {  return ledgeChecker;  }
     public LayerMask getLedgeLayer() { return ledgeLayer; }
@@ -85,7 +89,7 @@ public class Protagonist : MonoBehaviour
 
 
             // turn character
-            if (state.canChangeDirection && deltaX != 0)
+            if (state != null && state.canChangeDirection && deltaX != 0)
             {
                 model.rotation = Quaternion.LookRotation(new Vector3(deltaX, 0, 0));
             }
@@ -94,14 +98,13 @@ public class Protagonist : MonoBehaviour
 
     private void logPosition(string s)
     {
-        Debug.Log(s + " [transform position: " + transform.position + "]");
+        Debug.Log("Protagonist [transform position: " + transform.position + "]");
     }
 
     public void Climb()
     {
         if(climbDirection != 0)
         {
-            Debug.Log("Protagonist.Climb");
             controller.enabled = false;
             transform.position += new Vector3(0, 3 * climbDirection, 0);
             controller.enabled = true;

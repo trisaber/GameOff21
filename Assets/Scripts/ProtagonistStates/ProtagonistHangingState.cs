@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ProtagonistHangingState : ProtagonistStateBase
 {
-    public bool changeHanging = false;
+    public bool changeToHangingIdle = false;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         GetCharacterController(_animator);
-        changeHanging = false;
+        changeToHangingIdle = false;
         _animator.SetFloat("hanging", 0.0f);
 
         protagonist.state = this;
@@ -20,7 +20,7 @@ public class ProtagonistHangingState : ProtagonistStateBase
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (changeHanging)
+        if (changeToHangingIdle)
         {
             _animator.SetFloat("hanging", 1.0f, 0.2f, Time.deltaTime);
         }
@@ -43,6 +43,6 @@ public class ProtagonistHangingState : ProtagonistStateBase
 
     public override void EndOfAnimation()
     {
-        changeHanging = true;
+        changeToHangingIdle = true;
     }
 }
