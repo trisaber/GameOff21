@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7555e1b52caf7e144ba3ab14d188642f, type: 3}
+  m_Name: English
+  m_EditorClassIdentifier: 
+  firstCall: Arne?! Are you okay? I think you are suffering a major trauma; my sensors
+    do not detect any broken bones or bleeding even though we survived a major accident....
+    Arne?! Do you hear me?
+  standUpCall: Thank Holy Wafer that you are well! I spent almost all my energy trying
+    to keep the bugs away from you.
+  lavaReCall: Hey! Arne you forgot me!..
+  arne: Who are you?...
+  noteBook: A notebook from ancient times.
