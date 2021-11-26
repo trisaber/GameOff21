@@ -12,7 +12,7 @@ public class ProtagonistGenericState : ProtagonistStateBase
     override public void OnStateEnter(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // GOLog.ActivateClass(this.GetType());
-        GOLog.Log();
+        GOLog.Log("Animation" + name);
         GetCharacterController(_animator);
         protagonist.state = this;
 
@@ -22,13 +22,13 @@ public class ProtagonistGenericState : ProtagonistStateBase
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GOLog.Log();
+        GOLog.Log("Animation" + name);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GOLog.Log();
+        GOLog.Log("Animation" + name);
     }
 
     override public void EndOfAnimation()
