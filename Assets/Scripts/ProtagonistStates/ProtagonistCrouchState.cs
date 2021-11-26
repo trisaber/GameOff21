@@ -8,10 +8,10 @@ public class ProtagonistCrouchState : ProtagonistStateBase
     private bool transitionToIdle = true;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateEnter(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GetCharacterController(animator);
-        animator.SetFloat("speed", 0.0f);
+        GetCharacterController(_animator);
+        _animator.SetFloat("speed", 0.0f);
         protagonist.state = this;
         protagonist.moveSpeed = 0.0f;
 
@@ -19,41 +19,41 @@ public class ProtagonistCrouchState : ProtagonistStateBase
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateUpdate(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (transitionToIdle)
         {
-            animator.SetFloat("speed", 0.5f);
+            _animator.SetFloat("speed", 0.5f);
             transitionToIdle = false;
         }
 
-        if (Jump(animator) == false && Up(animator) == false)
+        if (Jump(_animator) == false && Up(_animator) == false)
         {
-            Move(animator);
+            Move(_animator);
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateExit(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
     }
 
-    bool Up(Animator animator)
+    bool Up(Animator _animator)
     {
         if (Input.GetAxis("Vertical") > 0)
         {
-            ChangeState(animator, ProtagonistStates.OnGround);
+            ChangeState(_animator, ProtagonistStates.OnGround);
             return true;
         }
 
         return false;
     }
 
-    bool Jump(Animator animator)
+    bool Jump(Animator _animator)
     {
         if (Input.GetButtonDown("Jump"))
         {
-            ChangeState(animator, ProtagonistStates.MayaUkemi);
+            ChangeState(_animator, ProtagonistStates.MayaUkemi);
             return true;
         }
 
@@ -61,19 +61,19 @@ public class ProtagonistCrouchState : ProtagonistStateBase
     }
 
 
-    void Move(Animator animator)
+    void Move(Animator _animator)
     {
         var horizontal = Input.GetAxis("Horizontal");
         Debug.Log("Mathf.Abs(horizontal): " + Mathf.Abs(horizontal));
         if (Mathf.Abs(horizontal) >= 0.15f)
         {
             protagonist.moveSpeed = walkSpeed;
-            animator.SetFloat("speed", 1.0f, 0.15f, Time.deltaTime);
+            _animator.SetFloat("speed", 1.0f, 0.15f, Time.deltaTime);
         }
         else
         {
             protagonist.moveSpeed = 0.0f;
-            animator.SetFloat("speed", (transitionToIdle ? 0.0f : 0.5f), 0.2f, Time.deltaTime);
+            _animator.SetFloat("speed", (transitionToIdle ? 0.0f : 0.5f), 0.2f, Time.deltaTime);
         }
 
     }

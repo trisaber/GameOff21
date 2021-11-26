@@ -11,7 +11,7 @@ public class Protagonist : MonoBehaviour
 
     private Vector3 direction;
     public float moveSpeed = 0.0f;
-    [SerializeField] float maxMoveSpeed { get; } = 2.0f;
+    // [SerializeField] float maxMoveSpeed { get; } = 2.0f;
     [SerializeField] float acceleration { get; } = 0.1f;
     [SerializeField] float gravity = -20f;
 
@@ -25,18 +25,17 @@ public class Protagonist : MonoBehaviour
     public Animator animator;
     public Transform model;
     public Collider jumpingCollider;
-
-    int AnimatorSpeedHash;
     #endregion
 
     // member variables
     public ProtagonistStateBase state = null;
+    public int climbDirection = 0;
 
     private void Start()
     {
     }
 
-    private void FixedUpdate() {}
+    private void FixedUpdate() { }
 
     private void Update()
     {
@@ -44,32 +43,33 @@ public class Protagonist : MonoBehaviour
         controller.Move(direction);
     }
 
-    private void LateUpdate()
-    { 
-    }
+    private void LateUpdate() { }
 
-    public Collider CheckLedgeCollide()
-    {
-        //if(Physics.CheckSphere(context.ledgeChecker.position, 0.15f, context.ledgeLayer))
-        Collider[] colliders = Physics.OverlapSphere(ledgeChecker.position, 2 /*0.15f * (1 + 4 * context.animator.GetFloat("speed"))*/, ledgeLayer);
-        foreach (Collider c in colliders)
-        {
-            if (model.rotation.y > 0 && c.name == "LeftLedge" && model.position.x <= (c.transform.position.x + 0.15f))
-            {
-                // Debug.Log("Right ledge grabbed. pos.x: " + c.transform.position.x + ", diff x: " + (c.transform.position.x - context.ledgeChecker.position.x));
-                // Debug.Log("ledge checker.x: " + context.ledgeChecker.transform.position.x + ", pos.x: " + context.transform.position.x);
-                return c;
-            }
-            if (model.rotation.y < 0 && c.name == "RightLedge" && model.position.x >= (c.transform.position.x - 0.15f))
-            {
-                // Debug.Log("Right ledge grabbed. pos.x: " + c.transform.position.x + ", diff x: " + (c.transform.position.x - context.ledgeChecker.position.x));
-                // Debug.Log("ledge checker.x: " + context.ledgeChecker.transform.position.x + ", pos.x: " + context.transform.position.x);
-                return c;
-            }
-        }
+    public Transform getLedgeChecker() {  return ledgeChecker;  }
+    public LayerMask getLedgeLayer() { return ledgeLayer; }
 
-        return null;
-    }
+    //public Collider CheckLedgeCollide2()
+    //{
+    //    //if(Physics.CheckSphere(context.ledgeChecker.position, 0.15f, context.ledgeLayer))
+    //    Collider[] colliders = Physics.OverlapSphere(ledgeChecker.position, 0.15f * moveSpeed, ledgeLayer);
+    //    foreach (Collider c in colliders)
+    //    {
+    //        if (model.rotation.y > 0 && c.name == "LeftLedge" && model.position.x <= (c.transform.position.x + 0.15f))
+    //        {
+    //            // Debug.Log("Right ledge grabbed. pos.x: " + c.transform.position.x + ", diff x: " + (c.transform.position.x - context.ledgeChecker.position.x));
+    //            // Debug.Log("ledge checker.x: " + context.ledgeChecker.transform.position.x + ", pos.x: " + context.transform.position.x);
+    //            return c;
+    //        }
+    //        if (model.rotation.y < 0 && c.name == "RightLedge" && model.position.x >= (c.transform.position.x - 0.15f))
+    //        {
+    //            // Debug.Log("Right ledge grabbed. pos.x: " + c.transform.position.x + ", diff x: " + (c.transform.position.x - context.ledgeChecker.position.x));
+    //            // Debug.Log("ledge checker.x: " + context.ledgeChecker.transform.position.x + ", pos.x: " + context.transform.position.x);
+    //            return c;
+    //        }
+    //    }
+
+    //    return null;
+    //}
 
     private void Move()
     {
@@ -85,7 +85,7 @@ public class Protagonist : MonoBehaviour
 
 
             // turn character
-            if (deltaX != 0)
+            if (state.canChangeDirection && deltaX != 0)
             {
                 model.rotation = Quaternion.LookRotation(new Vector3(deltaX, 0, 0));
             }
@@ -99,9 +99,14 @@ public class Protagonist : MonoBehaviour
 
     public void Climb()
     {
-        controller.enabled = false;
-        transform.position += new Vector3(0, 3, 0);
-        controller.enabled = true;
+        if(climbDirection != 0)
+        {
+            Debug.Log("Protagonist.Climb");
+            controller.enabled = false;
+            transform.position += new Vector3(0, 3 * climbDirection, 0);
+            controller.enabled = true;
+            climbDirection = 0;
+        }
     }
 }
 

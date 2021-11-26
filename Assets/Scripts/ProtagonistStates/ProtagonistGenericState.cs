@@ -6,13 +6,11 @@ public class ProtagonistGenericState : ProtagonistStateBase
 {
     [SerializeField] private float speed;
     [SerializeField] private ProtagonistStates nextState;
-    Animator animator;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateEnter(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GetCharacterController(animator);
-        this.animator = animator;
+        GetCharacterController(_animator);
         protagonist.state = this;
 
         protagonist.moveSpeed = speed;

@@ -4,34 +4,33 @@ using UnityEngine;
 
 public class ProtagonistClimbUpState : ProtagonistStateBase
 {
-    private bool isClimbed = false;
+    private bool endOfAnimation = false;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateEnter(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GetCharacterController(animator);
-        isClimbed = false;
+        GetCharacterController(_animator);
         protagonist.state = this;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateUpdate(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (isClimbed)
-        {
-            isClimbed = false;
-            protagonist.Climb();
-            ChangeState(animator, ProtagonistStates.OnGround);
-        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateExit(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (endOfAnimation)
+        {
+            protagonist.climbDirection = 1;
+            protagonist.Climb();
+            endOfAnimation = false;
+        }
     }
 
     public override void EndOfAnimation()
     {
-        Debug.Log("ProtagonistClimbUpState.EndOfAnimation");
-        isClimbed = true;
+        endOfAnimation = true;
+        ChangeState(animator, ProtagonistStates.OnGround);
     }
 }
