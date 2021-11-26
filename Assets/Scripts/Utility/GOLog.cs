@@ -6,8 +6,16 @@ using System.Diagnostics;
 
 public class GOLog
 {
+    private static List<int> types = new List<int>();
+
+    public static void ActivateClass(System.Type t)
+    {
+        types.Add(t.GetHashCode());
+    }
+
     public static void Log()
     {
+       
         Log(new StackTrace(), "");
     }
 
@@ -21,7 +29,10 @@ public class GOLog
         // var frame = stackTrace.GetFrame(1);
         var method = stackTrace.GetFrame(1).GetMethod();
         // Get calling method name
-        UnityEngine.Debug.Log(method.DeclaringType.Name +"." + method.Name + " " + str);
+        if (types.Contains(method.DeclaringType.GetHashCode()))
+        {
+            UnityEngine.Debug.Log(method.DeclaringType.Name +"." + method.Name + " " + str);
+        }
     }
 
     // System.Environment.StackTrace
