@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 2877485218913273016}
   - component: {fileID: 2068025606}
   - component: {fileID: 2068025611}
+  - component: {fileID: 4990549937868859258}
   m_Layer: 10
   m_Name: ProtagonistObject
   m_TagString: Untagged
@@ -119,8 +120,9 @@ MonoBehaviour:
   ledgeChecker: {fileID: 2877485218889252787}
   animator: {fileID: 2877485219408998768}
   model: {fileID: 2334088306577512095}
-  jumpingCollider: {fileID: 0}
+  targetLedge: {x: 0, y: 0, z: 0}
   state: {fileID: 0}
+  climbDirection: 0
 --- !u!114 &2068025606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +153,14 @@ MonoBehaviour:
   language: {fileID: 11400000, guid: 24bff8dc42b12c64fa3008944972a610, type: 2}
   spotDistance: 3
   lavaRecallDistance: 8
+--- !u!81 &4990549937868859258
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2877485218913273018}
+  m_Enabled: 1
 --- !u!1 &2877485219925055596
 GameObject:
   m_ObjectHideFlags: 0

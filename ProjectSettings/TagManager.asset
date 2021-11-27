@@ -19,7 +19,7 @@ TagManager:
   - ground
   - ledge
   - protagonist
-  - 
+  - inventory
   - 
   - 
   - 
@@ -43,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: inventory
+    uniqueID: 2607912485
     locked: 0
