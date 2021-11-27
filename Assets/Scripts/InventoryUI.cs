@@ -9,6 +9,7 @@ public class InventoryUI : MonoBehaviour
     public Collectable[] collectables;
 
     public Material PickedUp;
+    public bool inventory;
 
     public void PickUp(Collectable collected)
     {
@@ -30,10 +31,6 @@ public class InventoryUI : MonoBehaviour
                 {
                     Debug.Log("This item already in inventory");
                 }
-            }
-            if(inventoryCheck())
-            {
-                Debug.Log("All items are picked");
             }
         }     
     }

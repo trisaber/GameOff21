@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7555e1b52caf7e144ba3ab14d188642f, type: 3}
+  m_Name: French
+  m_EditorClassIdentifier: 
+  languageName: French
+  isSelected: 0
+  firstCall: "Arne?! Tu vas bien ?Je pense que tu as subi un traumatisme majeur,
+    mes capteurs n'ont d\xE9tect\xE9 aucun os cass\xE9 ou saignement mais nous avons
+    eu un gros accident quand m\xEAme.... Arne ?!Tu m\u2019entends ?"
+  standUpCall: "Merci \xE0 la t\xF4le sacr\xE9e que tu vas bien !J'ai d\xE9pens\xE9
+    presque toute mon \xE9nergie \xE0 garder les insectes loin de toi..."
+  briefing1: "Je m'appelle LAVA, Je suis ton assistant virtuel, pas de blessures
+    graves \xE0 ton corps mais tu as frapp\xE9 le sol assez fort,la perte de m\xE9moire,
+    l'inconscience et la confusion sont parmi les sympt\xF4mes possibles... "
+  briefing2: "Je dois r\xE9cup\xE9rer les objets \xE9parpill\xE9s et tu amener \xE0
+    ton v\xE9hicule d\xE8s que possible."
+  briefing3: "Les signaux S.O.S. des objets devraient fonctionner d\xE8s maintenant
+    doncgarde les oreilles ouvertes...Malheureusement c'est tout ce que je peux faire
+    pour l'instant..."
+  lavaReCall: "HeyArne ! Tuas oubli\xE9 qui je suis !"
+  noteBook: Un cahier des temps anciens.
+  holocon: Holoporteur.
+  sizeler: Dimensionneur.
+  sensor: "C'est int\xE9ressant !Une sorte de capteur de mouvement, je me demande
+    qui l'a mis ici, dans quel but... Nous devons \xEAtre prudents."
+  ladybug: "Coccinelle !Nous l'avons enfin eu Arne, l'itin\xE9raire enregistr\xE9
+    nous m\xE8nera \xE0 une clinique s\xFBre."

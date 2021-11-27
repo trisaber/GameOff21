@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7555e1b52caf7e144ba3ab14d188642f, type: 3}
+  m_Name: German
+  m_EditorClassIdentifier: 
+  languageName: Deutsch
+  isSelected: 0
+  firstCall: "Arne?! Bist du in Ordnung? Ich glaube, du leidest an einem gro\xDFen
+    Trauma; meine Sensoren erkennen keine Knochenbr\xFCche oder Blutungen, obwohl
+    wir einen schweren Unfall \xFCberlebt haben.... Arne?! H\xF6rst du mich?"
+  standUpCall: "Danke Holy Wafer, dass es dir gut geht! Ich habe fast meine ganze
+    Energie damit verbracht, die K\xE4fer von dir fernzuhalten."
+  lavaPicked: 
+  briefing1: "Mein Name ist LAVA, ich bin deine virtuelle Assistentin, du hast keine
+    ernsthaften Verletzungen an deinem K\xF6rper, aber du schl\xE4gst ziemlich hart
+    auf dem Boden auf. "
+  briefing2: "Einige Symptome sind m\xF6glich \u2026 einschlie\xDFlich Ged\xE4chtnisverlust,
+    mentaler Nebel und Verwirrung \u2026 Ich muss die verstreuten Gegenst\xE4nde
+    einsammeln und Sie sofort zu Ihrem Fahrzeug bringen.\r\n\r\n"
+  briefing3: "SOS. Signale von den Objekten m\xFCssen funktionieren. Halt deineOhren
+    offen...das ist leider alles, was ich jetzt tun kann..."
+  lavaReCall: Hey! Arne du hast mich vergessen!..
+  arne: 
+  noteBook: Ein Notizbuch aus der Antike.
+  holocon: "Holo-Tr\xE4ger. "
+  sizeler: "Gr\xF6\xDFen\xE4nderunger"
+  sensor: "Interessant! Irgendeine Art Bewegungsmelder. Ich frage mich, wer das hierhergestellt
+    hat, zu welchem Zweck... Wir m\xFCssen vorsichtig sein."
+  ladybug: "Marienk\xE4fer! Endlich sind wir dort angekommen, Arne, die aufgezeichnete
+    Route f\xFChrt uns in eine sichere Klinik."

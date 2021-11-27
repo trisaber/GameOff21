@@ -5,16 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="New Language")]
 public class NewLanguage : ScriptableObject
 {
+    public string languageName;
+    public bool isSelected;
+
     [TextArea(5, 10)]
     public string firstCall;
 
     [TextArea(5, 10)]
     public string standUpCall;
-
-    [TextArea(5, 10)]
-    public string lavaPicked;
-
-
 
     [TextArea(5, 10)]
     public string briefing1;
@@ -27,9 +25,6 @@ public class NewLanguage : ScriptableObject
 
     [TextArea(5, 10)]
     public string lavaReCall;
-
-    [TextArea(5, 10)]
-    public string arne;
 
     [TextArea(5, 10)]
     public string noteBook;
