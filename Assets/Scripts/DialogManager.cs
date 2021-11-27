@@ -71,9 +71,6 @@ public class DialogManager : MonoBehaviour
         {
             switch (other.gameObject.GetComponent<Collectable>().collectableType)
             {
-                case Collectable.collectable.LAVA:
-                    StartCoroutine(changeText(language.lavaReCall));    
-                    break;
                 case Collectable.collectable.Notebook:
                     StartCoroutine(changeText(language.noteBook));
                     break;
@@ -95,6 +92,15 @@ public class DialogManager : MonoBehaviour
 
             }
         }
+
+    }
+    private void OnTriggerExit(Collider other)
+    {
+       if (other.gameObject.GetComponent<Collectable>().collectableType== Collectable.collectable.LAVA)
+        {
+            StartCoroutine(changeText(language.lavaReCall));
+        }
+
 
     }
 }

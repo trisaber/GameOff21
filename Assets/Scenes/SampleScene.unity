@@ -6403,6 +6403,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: LAVA
       objectReference: {fileID: 0}
+    - target: {fileID: 5986101326059627483, guid: 0688c8291346cd54db289958771a6b85,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 3.9039383
+      objectReference: {fileID: 0}
+    - target: {fileID: 5986101326059627483, guid: 0688c8291346cd54db289958771a6b85,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.9696856
+      objectReference: {fileID: 0}
+    - target: {fileID: 5986101326059627483, guid: 0688c8291346cd54db289958771a6b85,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.05173111
+      objectReference: {fileID: 0}
+    - target: {fileID: 5986101326059627483, guid: 0688c8291346cd54db289958771a6b85,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.48484278
+      objectReference: {fileID: 0}
     - target: {fileID: 5986101326059627486, guid: 0688c8291346cd54db289958771a6b85,
         type: 3}
       propertyPath: m_RootOrder
