@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class DialogManager : MonoBehaviour
 {
     public Text text;
-    public float waitTime=10f;
-    public Transform lava;
+    public float waitTime = 10f;
     bool lavaFound = false;
 
     public NewLanguage language;
+    public float spotDistance = 3f;
+    public float lavaRecallDistance = 5f;
+
 
     private void Start()
     {
@@ -19,18 +21,26 @@ public class DialogManager : MonoBehaviour
 
     IEnumerator startLava()
     {
-        new WaitUntil(() => Input.anyKey);
+
         yield return StartCoroutine(changeText(language.firstCall));
-        yield return new WaitForSeconds(waitTime);
+       
         yield return StartCoroutine(changeText(language.standUpCall));
+
+        yield return StartCoroutine(changeText(language.briefing1));
+        yield return new WaitForSeconds(waitTime);
+        yield return StartCoroutine(changeText(language.briefing2));
+        yield return new WaitForSeconds(waitTime);
+        yield return StartCoroutine(changeText(language.briefing3));
+
     }
 
     IEnumerator changeText(string inputText)
     {
-        
-        
-        yield return new WaitUntil(()=>Input.anyKey);
+
+
         text.text = inputText;
+        yield return new WaitUntil(() => Input.anyKey);
+        yield return new WaitForSeconds(waitTime);
         StartCoroutine(clearText());
     }
 
@@ -39,20 +49,38 @@ public class DialogManager : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         text.text = "  ";
     }
-    private void Update()
-    {
-        lavaCall();
-    }
 
-    private void lavaCall()
+    private void OnTriggerEnter(Collider other)
     {
-        if (Vector3.Distance(transform.position, lava.position) < 5)
+        if (other.GetComponent<Collectable>() != null)
         {
-            lavaFound = true;
+            switch (other.gameObject.GetComponent<Collectable>().collectableType)
+            {
+                case Collectable.collectable.LAVA:
+                    StartCoroutine(changeText(language.lavaReCall));    
+                    break;
+                case Collectable.collectable.Notebook:
+                    StartCoroutine(changeText(language.noteBook));
+                    break;
+                case Collectable.collectable.holocon:
+                    StartCoroutine(changeText(language.holocon));
+                    break;
+                case Collectable.collectable.sizeler:
+                    StartCoroutine(changeText(language.sizeler));
+                    break;
+                case Collectable.collectable.sensor:
+                    StartCoroutine(changeText(language.sensor));
+                    break;
+                case Collectable.collectable.ladybug:
+                    StartCoroutine(changeText(language.ladybug));
+                    break;
+
+            }
         }
-        if (lavaFound && Vector3.Distance(transform.position, lava.position) > 5)
-        {
-            StartCoroutine(changeText(language.lavaReCall));
-        }
+
     }
 }
+    
+
+
+
