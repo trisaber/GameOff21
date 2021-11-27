@@ -6,58 +6,62 @@ public class ProtagonistMovementState : ProtagonistStateBase
 {
     [SerializeField] private float walkSpeed = 2.0f;
     [SerializeField] private float runSpeed = 3.0f;
-    [SerializeField] private float timeToRun = 3.0f;
+    [SerializeField] private float timeToRun = 2.0f;
     private float walkStart = 0.0f;
-
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateEnter(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GetCharacterController(animator);
-        animator.SetFloat("speed", 0.0f);
+        GOLog.Log();
+
+        GetCharacterController(_animator);
+        _animator.SetFloat("speed", 0.0f);
+        _animator.SetInteger("animationId", 0);
         protagonist.state = this;
-        animator.SetInteger("animationId", 0);
+        protagonist.moveSpeed = 0.0f;
 
         Input.ResetInputAxes();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateUpdate(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        GOLog.Log();
 
-        if (Jump(animator) == false && Crouch(animator) == false)
+        if (Jump(_animator) == false && Crouch(_animator) == false)
         {
-            Move(animator);
+            Move(_animator);
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateExit(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        GOLog.Log();
     }
 
-    bool Crouch(Animator animator)
+    bool Crouch(Animator _animator)
     {
         if (Input.GetAxis("Vertical") < 0)
         {
-            animator.SetInteger("animationId", (int)ProtagonistStates.Crouch);
+            _animator.SetInteger("animationId", (int)ProtagonistStates.Crouch);
             return true;
         }
 
         return false;
     }
 
-    bool Jump(Animator animator)
+    bool Jump(Animator _animator)
     {
         if (Input.GetButtonDown("Jump"))
         {
-            var aCollision = protagonist.CheckLedgeCollide();
-            protagonist.jumpingCollider = aCollision;
-            animator.SetInteger("animationId", (aCollision != null ? (int)ProtagonistStates.JumpGrabLedge : (int)ProtagonistStates.JumpMissedGrab));
+            var collidedLedge = CheckLedgeCollide();
+            protagonist.jumpingCollider = collidedLedge;
+            _animator.SetInteger("animationId", (collidedLedge != null ? (int)ProtagonistStates.JumpGrabLedge : (int)ProtagonistStates.JumpMissedGrab));
             return true;
         }
         else if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            ChangeState(animator, ProtagonistStates.JumpForward);
+            ChangeState(_animator, ProtagonistStates.JumpForward);
             return true;
         }
 
@@ -93,4 +97,32 @@ public class ProtagonistMovementState : ProtagonistStateBase
         }
 
     }
+
+    public Collider CheckLedgeCollide()
+    {
+        //if(Physics.CheckSphere(context.ledgeChecker.position, 0.15f, context.ledgeLayer))
+        float force = walkStart > 0.0f ? protagonist.moveSpeed * protagonist.moveSpeed : 1.0f;
+        Collider[] colliders = Physics.OverlapSphere(protagonist.getLedgeChecker().position, 0.15f * force, protagonist.getLedgeLayer());
+        Transform model = protagonist.model;
+
+        foreach (Collider c in colliders)
+        {
+            if (model.rotation.y > 0 && c.name == "LeftLedge" && model.position.x <= (c.transform.position.x + 0.15f))
+            {
+                // Debug.Log("Right ledge grabbed. pos.x: " + c.transform.position.x + ", diff x: " + (c.transform.position.x - context.ledgeChecker.position.x));
+                // Debug.Log("ledge checker.x: " + context.ledgeChecker.transform.position.x + ", pos.x: " + context.transform.position.x);
+                return c;
+            }
+            if (model.rotation.y < 0 && c.name == "RightLedge" && model.position.x >= (c.transform.position.x - 0.15f))
+            {
+                // Debug.Log("Right ledge grabbed. pos.x: " + c.transform.position.x + ", diff x: " + (c.transform.position.x - context.ledgeChecker.position.x));
+                // Debug.Log("ledge checker.x: " + context.ledgeChecker.transform.position.x + ", pos.x: " + context.transform.position.x);
+                return c;
+            }
+        }
+
+        return null;
+    }
+
+
 }
