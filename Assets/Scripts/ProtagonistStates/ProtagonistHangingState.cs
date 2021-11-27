@@ -34,6 +34,12 @@ public class ProtagonistHangingState : ProtagonistStateBase
             ChangeState(_animator, ProtagonistStates.OnGround); // ProtagonistStates.FallFromHanging
         }
 
+        float diffX = protagonist.targetLedge.x - protagonist.transform.position.x;
+        if (Mathf.Abs(diffX) <= 0.01)
+        {
+            protagonist.targetLedge = Vector3.zero;
+        }
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

@@ -609,7 +609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canChangeDirection: 0
   speed: 4
-  name: generic_state
+  name: FrontJump
   nextState: 0
 --- !u!114 &3486445888288340712
 MonoBehaviour:
@@ -715,7 +715,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canChangeDirection: 0
   speed: 0
-  name: generic_state
+  name: JumpAndMiss
   nextState: 0
 --- !u!1101 &7990258653019894306
 AnimatorStateTransition:
@@ -796,7 +796,7 @@ AnimatorStateMachine:
     m_Position: {x: 410, y: 210, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3600550119727767408}
-    m_Position: {x: 120, y: 210, z: 0}
+    m_Position: {x: 50, y: 210, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

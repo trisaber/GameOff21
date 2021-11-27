@@ -24,7 +24,7 @@ public class Protagonist : MonoBehaviour
 
     public Animator animator;
     public Transform model;
-    public Collider jumpingCollider;
+    public Vector3 targetLedge;
     #endregion
 
     // member variables
@@ -81,6 +81,10 @@ public class Protagonist : MonoBehaviour
         if (!Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer))
         {
             direction.y += gravity * Time.deltaTime;
+        }
+        else if (targetLedge != Vector3.zero)
+        {
+            direction.x = (targetLedge.x - transform.position.x) * 0.1f; // Time.deltaTime;
         }
         else // character can move freely on ground
         {

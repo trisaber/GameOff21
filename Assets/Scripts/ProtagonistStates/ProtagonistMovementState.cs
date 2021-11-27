@@ -18,6 +18,7 @@ public class ProtagonistMovementState : ProtagonistStateBase
         _animator.SetInteger("animationId", 0);
         protagonist.state = this;
         protagonist.moveSpeed = 0.0f;
+        protagonist.targetLedge = Vector3.zero;
 
         Input.ResetInputAxes();
     }
@@ -55,7 +56,7 @@ public class ProtagonistMovementState : ProtagonistStateBase
         if (Input.GetButtonDown("Jump"))
         {
             var collidedLedge = CheckLedgeCollide();
-            protagonist.jumpingCollider = collidedLedge;
+            protagonist.targetLedge = collidedLedge != null ? collidedLedge.transform.position : protagonist.transform.position;
             _animator.SetInteger("animationId", (collidedLedge != null ? (int)ProtagonistStates.JumpGrabLedge : (int)ProtagonistStates.JumpMissedGrab));
             return true;
         }

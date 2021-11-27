@@ -22,7 +22,7 @@ public class ProtagonistAnimationSync : MonoBehaviour
 
     public void AnimationEnd(int animationId)
     {
-        Debug.Log(" ProtagonistAnimationSync.AnimationEnd: " + (ProtagonistStateBase.ProtagonistStates)animationId);
+        // Debug.Log(" ProtagonistAnimationSync.AnimationEnd: " + (ProtagonistStateBase.ProtagonistStates)animationId);
         player.state.EndOfAnimation();
     }
 }
