@@ -6,7 +6,7 @@ using UnityEngine;
 public class InventoryUI : MonoBehaviour
 {
     public Collectable[] collectables;
-    public GameObject PASPanel;
+
     public Material PickedUp;
 
     public void PickUp(Collectable collected)
@@ -19,13 +19,11 @@ public class InventoryUI : MonoBehaviour
                 
                 if(!collectable.picked)
                 {
-                collectable.GetComponent<MeshRenderer>().material = PickedUp;
+                    collectable.GetComponentInChildren<MeshRenderer>().material = PickedUp;
+
+                  
                 collectable.picked = true;
                 Destroy(collected.gameObject);
-                    if (collectable.collectableType==Collectable.collectable.CollectabeA)
-                    {
-                        PASPanel.SetActive(true);
-                    }
                 }
                 else
                 {

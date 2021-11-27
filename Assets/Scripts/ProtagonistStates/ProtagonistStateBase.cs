@@ -17,13 +17,17 @@ public class ProtagonistStateBase : StateMachineBehaviour
         MayaUkemi = 8,
     }
 
+    public bool canChangeDirection = false;
+
     protected CharacterController cc = null;
     protected Protagonist protagonist;
+    protected Animator animator;
 
-    protected CharacterController GetCharacterController(Animator animator)
+    protected CharacterController GetCharacterController(Animator _animator)
     {
-        if (cc == null && animator != null)
+        if (cc == null && _animator != null)
         {
+            animator = _animator;
             cc = animator.GetComponentInParent<CharacterController>();
             protagonist = animator.GetComponentInParent<Protagonist>();
             if (protagonist == null || cc == null)

@@ -7,9 +7,9 @@ public class ProtagonistHopeState : ProtagonistStateBase
     [SerializeField] private float walkSpeed = 1.0f;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateEnter(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GetCharacterController(animator);
+        GetCharacterController(_animator);
         protagonist.state = this;
     }
 

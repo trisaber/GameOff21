@@ -5,14 +5,15 @@ using UnityEngine;
 public class ProtagonistGenericState : ProtagonistStateBase
 {
     [SerializeField] private float speed;
+    [SerializeField] private string name = "generic_state";
     [SerializeField] private ProtagonistStates nextState;
-    Animator animator;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateEnter(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GetCharacterController(animator);
-        this.animator = animator;
+        // GOLog.ActivateClass(this.GetType());
+        GOLog.Log("Animation" + name);
+        GetCharacterController(_animator);
         protagonist.state = this;
 
         protagonist.moveSpeed = speed;
@@ -21,16 +22,18 @@ public class ProtagonistGenericState : ProtagonistStateBase
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        GOLog.Log("Animation" + name);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        GOLog.Log("Animation" + name);
     }
 
     override public void EndOfAnimation()
     {
-        animator.SetInteger("animationId", (int)nextState);
+        ChangeState(animator, nextState);
     }
 
 }
