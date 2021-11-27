@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class InventoryUI : MonoBehaviour
@@ -19,7 +20,7 @@ public class InventoryUI : MonoBehaviour
                 
                 if(!collectable.picked)
                 {
-                    collectable.GetComponentInChildren<MeshRenderer>().material = PickedUp;
+                    collectable.GetComponent<Image>().enabled = true;
 
                   
                 collectable.picked = true;
