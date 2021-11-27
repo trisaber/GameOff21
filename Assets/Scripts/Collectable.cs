@@ -6,13 +6,17 @@ public class Collectable : MonoBehaviour
 {
     public enum collectable   //rename types as names of objects
     {
-        CollectabeA,
-        CollectabeB,
-        CollectabeC,
-        CollectabeD
+        LAVA,
+        Notebook,
+        holocon,
+        sizeler,
+        sensor,
+        ladybug
     };
-    public collectable collectableType = collectable.CollectabeA;
+    public collectable collectableType;
     public bool picked=false;
+    
+
 
 
 }

@@ -42,7 +42,8 @@ GameObject:
   - component: {fileID: 2877485218913272967}
   - component: {fileID: 2877485218913273017}
   - component: {fileID: 2877485218913273016}
-  - component: {fileID: 4350016083096100939}
+  - component: {fileID: 2068025606}
+  - component: {fileID: 2068025611}
   m_Layer: 10
   m_Name: ProtagonistObject
   m_TagString: Untagged
@@ -120,15 +121,36 @@ MonoBehaviour:
   model: {fileID: 2334088306577512095}
   jumpingCollider: {fileID: 0}
   state: {fileID: 0}
-  climbDirection: 0
---- !u!81 &4350016083096100939
-AudioListener:
+--- !u!114 &2068025606
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2877485218913273018}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e35c557f3ca891e45b0008257235e331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryUI: {fileID: 0}
+--- !u!114 &2068025611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2877485218913273018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ba0ff65d8e740f469df6ab05a926ced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
+  waitTime: 1
+  language: {fileID: 11400000, guid: 24bff8dc42b12c64fa3008944972a610, type: 2}
+  spotDistance: 3
+  lavaRecallDistance: 8
 --- !u!1 &2877485219925055596
 GameObject:
   m_ObjectHideFlags: 0
