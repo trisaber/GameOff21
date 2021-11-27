@@ -651,9 +651,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f63f3518702a5e4895b6be1fb89359d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 767948647}
-  smoothSpeed: 0.6
-  offset: {x: 0, y: 0, z: -5}
+  gameCam: {fileID: 0}
+  zoomCam: {fileID: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -815,12 +814,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2560435838887295554, guid: fedef97f36f3481439eb9d392214466f,
     type: 3}
   m_PrefabInstance: {fileID: 1525736546}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &767948647 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4509089630774625538, guid: 9aa340f030549ca45a655e5c025fb929,
-    type: 3}
-  m_PrefabInstance: {fileID: 680603843923176798}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &813443658
 PrefabInstance:
