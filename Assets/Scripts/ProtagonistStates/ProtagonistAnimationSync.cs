@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ProtagonistAnimationSync : MonoBehaviour
 {
-    public string hey;
     public Protagonist player;
     void Start()
     {
@@ -24,5 +23,17 @@ public class ProtagonistAnimationSync : MonoBehaviour
     {
         // Debug.Log(" ProtagonistAnimationSync.AnimationEnd: " + (ProtagonistStateBase.ProtagonistStates)animationId);
         player.state.EndOfAnimation();
+    }
+
+    public void AnimationActionStart(int animationId)
+    {
+        // GOLog.Log();
+        player.state.StartOfAction();
+    }
+
+    public void AnimationActionEnd(int animationId)
+    {
+        // GOLog.Log();
+        player.state.EndOfAction();
     }
 }

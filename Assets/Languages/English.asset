@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7555e1b52caf7e144ba3ab14d188642f, type: 3}
   m_Name: English
   m_EditorClassIdentifier: 
+  languageName: English
+  isSelected: 0
   firstCall: Arne?! Are you okay? I think you are suffering a major trauma; my sensors
     do not detect any broken bones or bleeding even though we survived a major accident....
     Arne?! Do you hear me?
@@ -28,8 +30,8 @@ MonoBehaviour:
   lavaReCall: Hey! Arne you forgot me!..
   arne: Who are you?...
   noteBook: A notebook from ancient times.
-  holocon: Holo carrier. (Holocon)
-  sizeler: Sizer. (Sizeler)
+  holocon: Holocon
+  sizeler: Sizeler
   sensor: Interesting! Some sort of motion detector, I wonder who put it here, for
     what purpose... We must be careful.
   ladybug: LadyBug! We finally got there Arne, the recorded route will take us to

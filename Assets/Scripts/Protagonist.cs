@@ -30,6 +30,13 @@ public class Protagonist : MonoBehaviour
     // member variables
     public ProtagonistStateBase state = null;
     public int climbDirection = 0;
+    public bool gravityActive = true;
+    private Vector3 unusedVector = new Vector3(-999999, -999999, -999999);
+
+    private void Awake()
+    {
+        ResetTargetLedge();
+    }
 
     private void Start()
     {
@@ -51,6 +58,7 @@ public class Protagonist : MonoBehaviour
 
     public Transform getLedgeChecker() {  return ledgeChecker;  }
     public LayerMask getLedgeLayer() { return ledgeLayer; }
+    public void ResetTargetLedge() { targetLedge = unusedVector;  }
 
     //public Collider CheckLedgeCollide2()
     //{
@@ -78,13 +86,24 @@ public class Protagonist : MonoBehaviour
     private void Move()
     {
         // if there is any emptiness, fall down
-        if (!Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer))
+        if (gravityActive && !Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer))
         {
             direction.y += gravity * Time.deltaTime;
         }
-        else if (targetLedge != Vector3.zero)
+        else if (targetLedge != unusedVector)
         {
-            direction.x = (targetLedge.x - transform.position.x) * 0.1f; // Time.deltaTime;
+            // direction.x = (targetLedge.x - transform.position.x) * 0.1f; // Time.deltaTime;
+            direction.x = (animator.rootRotation.y >= 0 ? 1 : -1) * moveSpeed * 0.05f;
+            var currentDiff = targetLedge.x - transform.position.x;
+            var nextDiff = currentDiff - direction.x;
+            if ( Mathf.Abs(currentDiff) < 0.01f || Mathf.Abs(currentDiff) <= Mathf.Abs(nextDiff))
+            {
+                direction.x = 0;
+            }
+        }
+        else if (state != null && state.canMoveWithoutInput)
+        {
+            direction.x = (animator.rootRotation.y >= 0 ? 1 : -1) * moveSpeed * Time.deltaTime;
         }
         else // character can move freely on ground
         {
@@ -97,6 +116,11 @@ public class Protagonist : MonoBehaviour
             {
                 model.rotation = Quaternion.LookRotation(new Vector3(deltaX, 0, 0));
             }
+        }
+
+        if (gravityActive == false || Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer))
+        {
+            direction.y = 0;
         }
     }
 

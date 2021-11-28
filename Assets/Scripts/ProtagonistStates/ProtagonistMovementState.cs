@@ -8,17 +8,18 @@ public class ProtagonistMovementState : ProtagonistStateBase
     [SerializeField] private float runSpeed = 3.0f;
     [SerializeField] private float timeToRun = 2.0f;
     private float walkStart = 0.0f;
+    private bool endOfAnimation = false;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         GOLog.Log();
-
+        endOfAnimation = false;
         GetCharacterController(_animator);
         _animator.SetFloat("speed", 0.0f);
         _animator.SetInteger("animationId", 0);
         protagonist.state = this;
         protagonist.moveSpeed = 0.0f;
-        protagonist.targetLedge = Vector3.zero;
+        protagonist.ResetTargetLedge();
 
         Input.ResetInputAxes();
     }
@@ -28,7 +29,7 @@ public class ProtagonistMovementState : ProtagonistStateBase
     {
         GOLog.Log();
 
-        if (Jump(_animator) == false && Crouch(_animator) == false)
+        if (protagonist.state == this && endOfAnimation == false && Jump(_animator) == false && Crouch(_animator) == false)
         {
             Move(_animator);
         }
@@ -38,6 +39,11 @@ public class ProtagonistMovementState : ProtagonistStateBase
     override public void OnStateExit(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         GOLog.Log();
+    }
+
+    public override void EndOfAnimation()
+    {
+        endOfAnimation = true;
     }
 
     bool Crouch(Animator _animator)
@@ -56,7 +62,7 @@ public class ProtagonistMovementState : ProtagonistStateBase
         if (Input.GetButtonDown("Jump"))
         {
             var collidedLedge = CheckLedgeCollide();
-            protagonist.targetLedge = collidedLedge != null ? collidedLedge.transform.position : protagonist.transform.position;
+            protagonist.targetLedge = collidedLedge != null ? collidedLedge.transform.position : protagonist.targetLedge;
             _animator.SetInteger("animationId", (collidedLedge != null ? (int)ProtagonistStates.JumpGrabLedge : (int)ProtagonistStates.JumpMissedGrab));
             return true;
         }
