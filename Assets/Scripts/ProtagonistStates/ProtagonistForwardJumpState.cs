@@ -2,44 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProtagonistHangingState : ProtagonistStateBase
+public class ProtagonistForwardJumpState : ProtagonistStateBase
 {
-    public bool changeToHangingIdle = false;
+    [SerializeField] private float jumpSpeed = 2.0f;
+    [SerializeField] private float jumpSpeedWhileStanding = 2.0f;
+    [SerializeField] private float jumpSpeedWhileRunning = 4.0f;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        canMoveWithoutInput = true;
         GetCharacterController(_animator);
-        changeToHangingIdle = false;
-        _animator.SetFloat("hanging", 0.0f);
 
+        jumpSpeed = animator.GetFloat("speed") > 0.6 ? jumpSpeedWhileRunning : jumpSpeedWhileStanding;
         protagonist.state = this;
-        protagonist.moveSpeed = 0.0f;
+        protagonist.gravityActive = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (changeToHangingIdle)
-        {
-            _animator.SetFloat("hanging", 1.0f, 0.2f, Time.deltaTime);
-        }
-
-        if (Input.GetAxis("Vertical") > 0)
-        {
-            ChangeState(_animator, ProtagonistStates.ClimbFromHanging);
-        }
-        else if (Input.GetAxis("Vertical") < 0)
-        {
-            ChangeState(_animator, ProtagonistStates.OnGround); // ProtagonistStates.FallFromHanging
-        }
-
-        float diffX = protagonist.targetLedge.x - protagonist.transform.position.x;
-        if (Mathf.Abs(diffX) <= 0.01)
-        {
-            protagonist.ResetTargetLedge();
-        }
-
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -49,6 +31,17 @@ public class ProtagonistHangingState : ProtagonistStateBase
 
     public override void EndOfAnimation()
     {
-        changeToHangingIdle = true;
+        ChangeState(animator, ProtagonistStates.OnGround);
+        protagonist.gravityActive = true;
+    }
+
+    public override void StartOfAction()
+    {
+        protagonist.moveSpeed = jumpSpeed;
+        protagonist.gravityActive = false;
+    }
+    public override void EndOfAction()
+    {
+        protagonist.moveSpeed = 0.0f;
     }
 }

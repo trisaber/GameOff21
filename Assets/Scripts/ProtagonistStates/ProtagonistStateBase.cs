@@ -18,6 +18,7 @@ public class ProtagonistStateBase : StateMachineBehaviour
     }
 
     public bool canChangeDirection = false;
+    public bool canMoveWithoutInput { get; protected set; } = false;
 
     protected CharacterController cc = null;
     protected Protagonist protagonist;
@@ -46,4 +47,6 @@ public class ProtagonistStateBase : StateMachineBehaviour
     // It is called when end frame of animation is reached.
     public virtual void EndOfAnimation() { }
     public virtual void StartOfAnimation() { }
+    public virtual void StartOfAction() { }
+    public virtual void EndOfAction() { }
 }
