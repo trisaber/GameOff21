@@ -16,6 +16,7 @@ public class ProtagonistStateBase : StateMachineBehaviour
         Crouch = 7,
         MayaUkemi = 8,
         Laying=9,
+        ClimbDown=10,
     }
 
     public bool canChangeDirection = false;

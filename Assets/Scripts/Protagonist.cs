@@ -49,7 +49,6 @@ public class Protagonist : MonoBehaviour
         GOLog.Log();
         Move();
         var flags = controller.Move(direction);
-        GOLog.Log(true, "flags: " + flags);
     }
 
     private void LateUpdate()
@@ -58,8 +57,11 @@ public class Protagonist : MonoBehaviour
     }
 
     public Transform getLedgeChecker() {  return ledgeChecker;  }
+    public Transform getGroundChecker() { return groundCheck; }
     public LayerMask getLedgeLayer() { return ledgeLayer; }
     public void ResetTargetLedge() { targetLedge = unusedVector;  }
+    public void TurnRight() { model.rotation = Quaternion.LookRotation(new Vector3(1, 0, 0)); }
+    public void TurnLeft() { model.rotation = Quaternion.LookRotation(new Vector3(-1, 0, 0)); }
 
     private void Move()
     {
