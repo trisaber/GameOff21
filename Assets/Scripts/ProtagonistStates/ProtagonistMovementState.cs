@@ -9,6 +9,8 @@ public class ProtagonistMovementState : ProtagonistStateBase
     [SerializeField] private float timeToRun = 2.0f;
     private float walkStart = 0.0f;
     private bool endOfAnimation = false;
+    private Collector collector;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -21,6 +23,7 @@ public class ProtagonistMovementState : ProtagonistStateBase
         protagonist.moveSpeed = 0.0f;
         protagonist.ResetTargetLedge();
 
+        collector = protagonist.GetComponentInParent<Collector>();
         Input.ResetInputAxes();
     }
 
@@ -29,7 +32,7 @@ public class ProtagonistMovementState : ProtagonistStateBase
     {
         GOLog.Log();
 
-        if (protagonist.state == this && endOfAnimation == false && Jump(_animator) == false && Crouch(_animator) == false)
+        if (protagonist.state == this && endOfAnimation == false && !PickUp() && !Jump(_animator) && !Crouch(_animator))
         {
             Move(_animator);
         }
@@ -44,6 +47,16 @@ public class ProtagonistMovementState : ProtagonistStateBase
     public override void EndOfAnimation()
     {
         endOfAnimation = true;
+    }
+
+    public bool PickUp()
+    {
+        if (Input.GetButtonDown("Fire2") && protagonist.moveSpeed <= 0.1f && collector.CanPickUpObject())
+        {
+            ChangeState(animator, ProtagonistStates.TakeObject);
+            return true;
+        }
+        return false;
     }
 
     bool Crouch(Animator _animator)

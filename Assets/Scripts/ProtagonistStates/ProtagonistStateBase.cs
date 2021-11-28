@@ -18,6 +18,7 @@ public class ProtagonistStateBase : StateMachineBehaviour
         Laying=9,
         ClimbDown=10,
         StepJump=11,
+        TakeObject=12,
     }
 
     public bool canChangeDirection = false;
