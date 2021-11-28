@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ProtagonistForwardJumpState : ProtagonistStateBase
 {
-    [SerializeField] private float jumpSpeed = 2.0f;
-    [SerializeField] private float jumpSpeedWhileStanding = 2.0f;
+    [SerializeField] private float jumpSpeed = 2.5f;
+    [SerializeField] private float jumpSpeedWhileStanding = 2.5f;
     [SerializeField] private float jumpSpeedWhileRunning = 4.0f;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -29,10 +29,8 @@ public class ProtagonistForwardJumpState : ProtagonistStateBase
     {
     }
 
-    public override void EndOfAnimation()
+    public override void StartOfAnimation()
     {
-        ChangeState(animator, ProtagonistStates.OnGround);
-        protagonist.gravityActive = true;
     }
 
     public override void StartOfAction()
@@ -40,9 +38,17 @@ public class ProtagonistForwardJumpState : ProtagonistStateBase
         protagonist.moveSpeed = jumpSpeed;
         protagonist.gravityActive = false;
     }
+
     public override void EndOfAction()
     {
         protagonist.gravityActive = true;
         protagonist.moveSpeed = 0.0f;
     }
+
+    public override void EndOfAnimation()
+    {
+        ChangeState(animator, ProtagonistStates.OnGround);
+        protagonist.gravityActive = true;
+    }
+
 }

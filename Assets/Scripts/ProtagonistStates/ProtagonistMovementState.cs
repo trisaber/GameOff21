@@ -71,6 +71,11 @@ public class ProtagonistMovementState : ProtagonistStateBase
             ChangeState(_animator, ProtagonistStates.JumpForward);
             return true;
         }
+        else if (Input.GetKeyDown(KeyCode.LeftShift) && protagonist.moveSpeed <= 0.1f)
+        {
+            ChangeState(_animator, ProtagonistStates.StepJump);
+            return true;
+        }
 
         return false;
     }

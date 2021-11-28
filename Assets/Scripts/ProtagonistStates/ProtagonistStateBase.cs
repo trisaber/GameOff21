@@ -17,6 +17,7 @@ public class ProtagonistStateBase : StateMachineBehaviour
         MayaUkemi = 8,
         Laying=9,
         ClimbDown=10,
+        StepJump=11,
     }
 
     public bool canChangeDirection = false;
