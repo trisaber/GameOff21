@@ -48,7 +48,8 @@ public class Protagonist : MonoBehaviour
     {
         GOLog.Log();
         Move();
-        controller.Move(direction);
+        var flags = controller.Move(direction);
+        GOLog.Log(true, "flags: " + flags);
     }
 
     private void LateUpdate()
@@ -62,10 +63,12 @@ public class Protagonist : MonoBehaviour
 
     private void Move()
     {
+        direction.x = 0;
+
         // if there is any emptiness, fall down
-        if (gravityActive && !Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer))
+        if (gravityActive && (!Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer) && !controller.isGrounded))
         {
-            direction.y += gravity * Time.deltaTime;
+            direction.y = gravity * Time.deltaTime;
         }
         else if (targetLedge != unusedVector)  // moving toward the target ledge
         {

@@ -108,8 +108,8 @@ public class ProtagonistMovementState : ProtagonistStateBase
     public Collider CheckLedgeCollide()
     {
         //if(Physics.CheckSphere(context.ledgeChecker.position, 0.15f, context.ledgeLayer))
-        float force = walkStart > 0.0f ? protagonist.moveSpeed * protagonist.moveSpeed : 1.0f;
-        Collider[] colliders = Physics.OverlapSphere(protagonist.getLedgeChecker().position, 0.15f * force, protagonist.getLedgeLayer());
+        float r = walkStart > 0.0f ? 0.15f * protagonist.moveSpeed * protagonist.moveSpeed : 0.5f;
+        Collider[] colliders = Physics.OverlapSphere(protagonist.getLedgeChecker().position, r, protagonist.getLedgeLayer());
         Transform model = protagonist.model;
 
         foreach (Collider c in colliders)
