@@ -123,6 +123,7 @@ MonoBehaviour:
   targetLedge: {x: 0, y: 0, z: 0}
   state: {fileID: 0}
   climbDirection: 0
+  gravityActive: 1
 --- !u!114 &2068025606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +156,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a3ca15a0db024fe40a8f2fc61167be0f, type: 2}
   - {fileID: 11400000, guid: 5df8e0107bee31346835ca663e74b53b, type: 2}
   - {fileID: 11400000, guid: 1570613ec5f2e9041bec5801b6842fd5, type: 2}
-  language: {fileID: 11400000, guid: 24bff8dc42b12c64fa3008944972a610, type: 2}
   spotDistance: 3
   lavaRecallDistance: 8
   inventory: {fileID: 0}
@@ -228,7 +228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d969fb9c2c86443669c2e7223c3c8a3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hey: 25
   player: {fileID: 2877485218913273016}
 --- !u!1001 &2877485219408998772
 PrefabInstance:
