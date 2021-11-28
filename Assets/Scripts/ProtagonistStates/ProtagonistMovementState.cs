@@ -29,7 +29,7 @@ public class ProtagonistMovementState : ProtagonistStateBase
     {
         GOLog.Log();
 
-        if (endOfAnimation == false && Jump(_animator) == false && Crouch(_animator) == false)
+        if (protagonist.state == this && endOfAnimation == false && Jump(_animator) == false && Crouch(_animator) == false)
         {
             Move(_animator);
         }

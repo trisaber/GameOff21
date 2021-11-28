@@ -33,6 +33,11 @@ public class Protagonist : MonoBehaviour
     public bool gravityActive = true;
     private Vector3 unusedVector = new Vector3(-999999, -999999, -999999);
 
+    private void Awake()
+    {
+        ResetTargetLedge();
+    }
+
     private void Start()
     {
     }
@@ -87,9 +92,16 @@ public class Protagonist : MonoBehaviour
         }
         else if (targetLedge != unusedVector)
         {
-            direction.x = (targetLedge.x - transform.position.x) * 0.1f; // Time.deltaTime;
+            // direction.x = (targetLedge.x - transform.position.x) * 0.1f; // Time.deltaTime;
+            direction.x = (animator.rootRotation.y >= 0 ? 1 : -1) * moveSpeed * 0.05f;
+            var currentDiff = targetLedge.x - transform.position.x;
+            var nextDiff = currentDiff - direction.x;
+            if ( Mathf.Abs(currentDiff) < 0.01f || Mathf.Abs(currentDiff) <= Mathf.Abs(nextDiff))
+            {
+                direction.x = 0;
+            }
         }
-        else if (state.canMoveWithoutInput)
+        else if (state != null && state.canMoveWithoutInput)
         {
             direction.x = (animator.rootRotation.y >= 0 ? 1 : -1) * moveSpeed * Time.deltaTime;
         }
