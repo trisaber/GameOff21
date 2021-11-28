@@ -51,8 +51,6 @@ public class DialogManager : MonoBehaviour
 
     IEnumerator changeText(string inputText)
     {
-
-
         text.text = inputText;
         yield return new WaitUntil(() => Input.anyKey);
         yield return new WaitForSeconds(waitTime);
@@ -89,10 +87,8 @@ public class DialogManager : MonoBehaviour
                     StartCoroutine(changeText(language.ladybug));
                     }
                     break;
-
             }
         }
-
     }
     private void OnTriggerExit(Collider other)
     {

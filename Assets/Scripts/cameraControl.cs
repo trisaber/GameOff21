@@ -33,11 +33,11 @@ public class cameraControl : MonoBehaviour
      */
     private void FixedUpdate()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Submit"))
         {
             ZoomCam();
         }
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("Submit"))
         {
             GameCam();
         }
