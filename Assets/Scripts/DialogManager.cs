@@ -96,12 +96,13 @@ public class DialogManager : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-       if (other.gameObject.GetComponent<Collectable>().collectableType== Collectable.collectable.LAVA)
+        if (other.GetComponent<Collectable>() != null)
         {
-            StartCoroutine(changeText(language.lavaReCall));
-        }
-
-
+            if (other.gameObject.GetComponent<Collectable>().collectableType == Collectable.collectable.LAVA)
+            {
+                StartCoroutine(changeText(language.lavaReCall));
+            }
+        } 
     }
 }
     
