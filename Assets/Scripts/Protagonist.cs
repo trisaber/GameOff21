@@ -60,29 +60,6 @@ public class Protagonist : MonoBehaviour
     public LayerMask getLedgeLayer() { return ledgeLayer; }
     public void ResetTargetLedge() { targetLedge = unusedVector;  }
 
-    //public Collider CheckLedgeCollide2()
-    //{
-    //    //if(Physics.CheckSphere(context.ledgeChecker.position, 0.15f, context.ledgeLayer))
-    //    Collider[] colliders = Physics.OverlapSphere(ledgeChecker.position, 0.15f * moveSpeed, ledgeLayer);
-    //    foreach (Collider c in colliders)
-    //    {
-    //        if (model.rotation.y > 0 && c.name == "LeftLedge" && model.position.x <= (c.transform.position.x + 0.15f))
-    //        {
-    //            // Debug.Log("Right ledge grabbed. pos.x: " + c.transform.position.x + ", diff x: " + (c.transform.position.x - context.ledgeChecker.position.x));
-    //            // Debug.Log("ledge checker.x: " + context.ledgeChecker.transform.position.x + ", pos.x: " + context.transform.position.x);
-    //            return c;
-    //        }
-    //        if (model.rotation.y < 0 && c.name == "RightLedge" && model.position.x >= (c.transform.position.x - 0.15f))
-    //        {
-    //            // Debug.Log("Right ledge grabbed. pos.x: " + c.transform.position.x + ", diff x: " + (c.transform.position.x - context.ledgeChecker.position.x));
-    //            // Debug.Log("ledge checker.x: " + context.ledgeChecker.transform.position.x + ", pos.x: " + context.transform.position.x);
-    //            return c;
-    //        }
-    //    }
-
-    //    return null;
-    //}
-
     private void Move()
     {
         // if there is any emptiness, fall down
@@ -90,7 +67,7 @@ public class Protagonist : MonoBehaviour
         {
             direction.y += gravity * Time.deltaTime;
         }
-        else if (targetLedge != unusedVector)
+        else if (targetLedge != unusedVector)  // moving toward the target ledge
         {
             // direction.x = (targetLedge.x - transform.position.x) * 0.1f; // Time.deltaTime;
             direction.x = (animator.rootRotation.y >= 0 ? 1 : -1) * moveSpeed * 0.05f;
