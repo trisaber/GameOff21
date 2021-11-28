@@ -9,14 +9,29 @@ public class DialogManager : MonoBehaviour
     public float waitTime = 10f;
     bool lavaFound = false;
 
-    public NewLanguage language;
+    public NewLanguage[] languages;
+    private NewLanguage language;
     public float spotDistance = 3f;
     public float lavaRecallDistance = 5f;
+    public InventoryUI inventory;
+
+    private void Awake()
+    {
+        foreach (NewLanguage clanguage in languages)
+        {
+
+            if(PlayerPrefs.GetString("selectedLanguage")==clanguage.languageName)
+            {
+                language = clanguage;
+            }
+        }
+    }
 
 
     private void Start()
     {
         StartCoroutine(startLava());
+       
     }
 
     IEnumerator startLava()
@@ -27,9 +42,9 @@ public class DialogManager : MonoBehaviour
         yield return StartCoroutine(changeText(language.standUpCall));
 
         yield return StartCoroutine(changeText(language.briefing1));
-        yield return new WaitForSeconds(waitTime);
+
         yield return StartCoroutine(changeText(language.briefing2));
-        yield return new WaitForSeconds(waitTime);
+
         yield return StartCoroutine(changeText(language.briefing3));
 
     }
@@ -56,9 +71,6 @@ public class DialogManager : MonoBehaviour
         {
             switch (other.gameObject.GetComponent<Collectable>().collectableType)
             {
-                case Collectable.collectable.LAVA:
-                    StartCoroutine(changeText(language.lavaReCall));    
-                    break;
                 case Collectable.collectable.Notebook:
                     StartCoroutine(changeText(language.noteBook));
                     break;
@@ -72,11 +84,23 @@ public class DialogManager : MonoBehaviour
                     StartCoroutine(changeText(language.sensor));
                     break;
                 case Collectable.collectable.ladybug:
+                    if (inventory.inventoryCheck())
+                    {
                     StartCoroutine(changeText(language.ladybug));
+                    }
                     break;
 
             }
         }
+
+    }
+    private void OnTriggerExit(Collider other)
+    {
+       if (other.gameObject.GetComponent<Collectable>().collectableType== Collectable.collectable.LAVA)
+        {
+            StartCoroutine(changeText(language.lavaReCall));
+        }
+
 
     }
 }
