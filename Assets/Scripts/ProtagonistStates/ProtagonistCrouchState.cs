@@ -27,7 +27,7 @@ public class ProtagonistCrouchState : ProtagonistStateBase
             transitionToIdle = false;
         }
 
-        if (Jump(_animator) == false && Up(_animator) == false)
+        if (Jump(_animator) == false && UpDown(_animator) == false)
         {
             Move(_animator);
         }
@@ -38,18 +38,35 @@ public class ProtagonistCrouchState : ProtagonistStateBase
     {
     }
 
-    bool Up(Animator _animator)
+    public override void EndOfAnimation()
+    {
+        transitionToIdle = true;
+    }
+
+    private bool UpDown(Animator _animator)
     {
         if (Input.GetAxis("Vertical") > 0)
         {
             ChangeState(_animator, ProtagonistStates.OnGround);
             return true;
         }
+        else if (Input.GetAxis("Vertical") < 0)
+        {
+            Collider[] colliders = Physics.OverlapSphere(protagonist.getGroundChecker().position, 0.15f, protagonist.getLedgeLayer());
+            if(colliders.Length > 0)
+            {
+                if (colliders[0].name == "LeftLedge") { protagonist.TurnRight(); }
+                else { protagonist.TurnLeft(); }
+                ChangeState(_animator, ProtagonistStates.ClimbDown);
+            }
 
-        return false;
+            return true;
+        }
+
+       return false;
     }
 
-    bool Jump(Animator _animator)
+    private bool Jump(Animator _animator)
     {
         if (Input.GetButtonDown("Jump"))
         {
@@ -61,7 +78,7 @@ public class ProtagonistCrouchState : ProtagonistStateBase
     }
 
 
-    void Move(Animator _animator)
+    private void Move(Animator _animator)
     {
         var horizontal = Input.GetAxis("Horizontal");
         Debug.Log("Mathf.Abs(horizontal): " + Mathf.Abs(horizontal));
@@ -76,11 +93,6 @@ public class ProtagonistCrouchState : ProtagonistStateBase
             _animator.SetFloat("speed", (transitionToIdle ? 0.0f : 0.5f), 0.2f, Time.deltaTime);
         }
 
-    }
-
-    public override void EndOfAnimation()
-    {
-        transitionToIdle = true;
     }
 
 }

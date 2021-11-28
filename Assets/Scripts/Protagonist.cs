@@ -48,7 +48,7 @@ public class Protagonist : MonoBehaviour
     {
         GOLog.Log();
         Move();
-        controller.Move(direction);
+        var flags = controller.Move(direction);
     }
 
     private void LateUpdate()
@@ -57,40 +57,22 @@ public class Protagonist : MonoBehaviour
     }
 
     public Transform getLedgeChecker() {  return ledgeChecker;  }
+    public Transform getGroundChecker() { return groundCheck; }
     public LayerMask getLedgeLayer() { return ledgeLayer; }
     public void ResetTargetLedge() { targetLedge = unusedVector;  }
-
-    //public Collider CheckLedgeCollide2()
-    //{
-    //    //if(Physics.CheckSphere(context.ledgeChecker.position, 0.15f, context.ledgeLayer))
-    //    Collider[] colliders = Physics.OverlapSphere(ledgeChecker.position, 0.15f * moveSpeed, ledgeLayer);
-    //    foreach (Collider c in colliders)
-    //    {
-    //        if (model.rotation.y > 0 && c.name == "LeftLedge" && model.position.x <= (c.transform.position.x + 0.15f))
-    //        {
-    //            // Debug.Log("Right ledge grabbed. pos.x: " + c.transform.position.x + ", diff x: " + (c.transform.position.x - context.ledgeChecker.position.x));
-    //            // Debug.Log("ledge checker.x: " + context.ledgeChecker.transform.position.x + ", pos.x: " + context.transform.position.x);
-    //            return c;
-    //        }
-    //        if (model.rotation.y < 0 && c.name == "RightLedge" && model.position.x >= (c.transform.position.x - 0.15f))
-    //        {
-    //            // Debug.Log("Right ledge grabbed. pos.x: " + c.transform.position.x + ", diff x: " + (c.transform.position.x - context.ledgeChecker.position.x));
-    //            // Debug.Log("ledge checker.x: " + context.ledgeChecker.transform.position.x + ", pos.x: " + context.transform.position.x);
-    //            return c;
-    //        }
-    //    }
-
-    //    return null;
-    //}
+    public void TurnRight() { model.rotation = Quaternion.LookRotation(new Vector3(1, 0, 0)); }
+    public void TurnLeft() { model.rotation = Quaternion.LookRotation(new Vector3(-1, 0, 0)); }
 
     private void Move()
     {
+        direction.x = 0;
+
         // if there is any emptiness, fall down
-        if (gravityActive && !Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer))
+        if (gravityActive && (!Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer) && !controller.isGrounded))
         {
-            direction.y += gravity * Time.deltaTime;
+            direction.y = gravity * Time.deltaTime;
         }
-        else if (targetLedge != unusedVector)
+        else if (targetLedge != unusedVector)  // moving toward the target ledge
         {
             // direction.x = (targetLedge.x - transform.position.x) * 0.1f; // Time.deltaTime;
             direction.x = (animator.rootRotation.y >= 0 ? 1 : -1) * moveSpeed * 0.05f;
