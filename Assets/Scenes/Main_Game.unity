@@ -32267,6 +32267,16 @@ PrefabInstance:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 1470766274}
+    - target: {fileID: 2877485218913273016, guid: 18c993038dab84b08abc5477fdf46cdc,
+        type: 3}
+      propertyPath: gravity
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2877485218913273017, guid: 18c993038dab84b08abc5477fdf46cdc,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 2877485218913273018, guid: 18c993038dab84b08abc5477fdf46cdc,
         type: 3}
       propertyPath: m_Name

@@ -22,6 +22,7 @@ public class ProtagonistForwardJumpState : ProtagonistStateBase
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        ChangeState(protagonist.falling, animator, ProtagonistStates.Falling);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

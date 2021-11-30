@@ -32,7 +32,11 @@ public class ProtagonistMovementState : ProtagonistStateBase
     {
         GOLog.Log();
 
-        if (protagonist.state == this && endOfAnimation == false && !PickUp() && !Jump(_animator) && !Crouch(_animator))
+        if (protagonist.falling)
+        {
+            ChangeState(animator, ProtagonistStates.Falling);
+        }
+        else if (protagonist.state == this && endOfAnimation == false && !PickUp() && !Jump(_animator) && !Crouch(_animator))
         {
             Move(_animator);
         }
