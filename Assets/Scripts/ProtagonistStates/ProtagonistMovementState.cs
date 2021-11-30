@@ -9,6 +9,8 @@ public class ProtagonistMovementState : ProtagonistStateBase
     [SerializeField] private float timeToRun = 2.0f;
     private float walkStart = 0.0f;
     private bool endOfAnimation = false;
+    private Collector collector;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -21,6 +23,7 @@ public class ProtagonistMovementState : ProtagonistStateBase
         protagonist.moveSpeed = 0.0f;
         protagonist.ResetTargetLedge();
 
+        collector = protagonist.GetComponentInParent<Collector>();
         Input.ResetInputAxes();
     }
 
@@ -29,7 +32,11 @@ public class ProtagonistMovementState : ProtagonistStateBase
     {
         GOLog.Log();
 
-        if (protagonist.state == this && endOfAnimation == false && Jump(_animator) == false && Crouch(_animator) == false)
+        if (protagonist.falling)
+        {
+            ChangeState(animator, ProtagonistStates.Falling);
+        }
+        else if (protagonist.state == this && endOfAnimation == false && !PickUp() && !Jump(_animator) && !Crouch(_animator))
         {
             Move(_animator);
         }
@@ -44,6 +51,16 @@ public class ProtagonistMovementState : ProtagonistStateBase
     public override void EndOfAnimation()
     {
         endOfAnimation = true;
+    }
+
+    public bool PickUp()
+    {
+        if (Input.GetButtonDown("Fire2") && protagonist.moveSpeed <= 0.1f && collector.CanPickUpObject())
+        {
+            ChangeState(animator, ProtagonistStates.TakeObject);
+            return true;
+        }
+        return false;
     }
 
     bool Crouch(Animator _animator)
@@ -69,6 +86,11 @@ public class ProtagonistMovementState : ProtagonistStateBase
         else if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             ChangeState(_animator, ProtagonistStates.JumpForward);
+            return true;
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftShift) && protagonist.moveSpeed <= 0.1f)
+        {
+            ChangeState(_animator, ProtagonistStates.StepJump);
             return true;
         }
 
@@ -108,8 +130,8 @@ public class ProtagonistMovementState : ProtagonistStateBase
     public Collider CheckLedgeCollide()
     {
         //if(Physics.CheckSphere(context.ledgeChecker.position, 0.15f, context.ledgeLayer))
-        float force = walkStart > 0.0f ? protagonist.moveSpeed * protagonist.moveSpeed : 1.0f;
-        Collider[] colliders = Physics.OverlapSphere(protagonist.getLedgeChecker().position, 0.15f * force, protagonist.getLedgeLayer());
+        float r = walkStart > 0.0f ? 0.15f * protagonist.moveSpeed * protagonist.moveSpeed : 0.5f;
+        Collider[] colliders = Physics.OverlapSphere(protagonist.getLedgeChecker().position, r, protagonist.getLedgeLayer());
         Transform model = protagonist.model;
 
         foreach (Collider c in colliders)

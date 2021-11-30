@@ -16,6 +16,11 @@ public class ProtagonistStateBase : StateMachineBehaviour
         Crouch = 7,
         MayaUkemi = 8,
         Laying=9,
+        ClimbDown=10,
+        StepJump=11,
+        TakeObject=12,
+        Falling=13,
+        FinalFall=14,
     }
 
     public bool canChangeDirection = false;
@@ -44,6 +49,15 @@ public class ProtagonistStateBase : StateMachineBehaviour
     {
         animator.SetInteger("animationId", (int)nextState);
     }
+
+    public void ChangeState(bool condition, Animator animator, ProtagonistStates nextState)
+    {
+        if (condition)
+        {
+            ChangeState(animator, nextState);
+        }
+    }
+
 
     // It is called when end frame of animation is reached.
     public virtual void EndOfAnimation() { }
