@@ -13,6 +13,8 @@ public class ProtagonistGenericState : ProtagonistStateBase
     {
         // GOLog.ActivateClass(this.GetType());
         GOLog.Log("Animation" + name);
+
+        canMoveWithoutInput = speed > 0;
         GetCharacterController(_animator);
         protagonist.state = this;
 
