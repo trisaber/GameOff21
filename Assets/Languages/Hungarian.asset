@@ -12,16 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7555e1b52caf7e144ba3ab14d188642f, type: 3}
   m_Name: Hungarian
   m_EditorClassIdentifier: 
-  languageName: 
+  languageName: hungarian
   isSelected: 0
-  firstCall: 
-  standUpCall: 
-  briefing1: 
-  briefing2: 
-  briefing3: 
-  lavaReCall: 
-  noteBook: 
-  holocon: 
-  sizeler: 
-  sensor: 
-  ladybug: 
+  firstCall: "Arne?! J\xF3l vagy? Azt hiszem, s\xFAlyos traum\xE1t szenvedett el,
+    az \xE9rz\xE9kel\u0151im nem \xE9szleltek csontt\xF6r\xE9st vagy v\xE9rz\xE9st,
+    de m\xE9gis egy s\xFAlyos balesetet t\xFAl\xE9lt\xFCnk... Arne?! Hallasz engem? "
+  standUpCall: "H\xE1la Szentosty\xE1nak, hogy j\xF3l vagy! Szinte minden energi\xE1mat
+    arra haszn\xE1ltam, hogy t\xE1vol tarthassam t\u0151led a bogarakat."
+  briefing1: "A nevem LAVA, \xE9n vagyok a virtu\xE1lis asszisztense, nincs komoly
+    s\xE9r\xFCl\xE9s a test\xE9n, de el\xE9g er\u0151sen neki\xFCtk\xF6zt\xE9l a
+    f\xF6ldnek, "
+  briefing2: "lehets\xE9ges t\xFCnetek k\xF6z\xE9 tartozik a mem\xF3riaveszt\xE9s,
+    tudatzavar \xE9s zavar is... \xD6ssze kell szednem a ki\xF6ml\xF6tt t\xE1rgyakat,
+    \xE9s a lehet\u0151 leghamarabb a j\xE1rm\u0171vedhez kell juttatnom t\xE9ged."
+  briefing3: "Az objektumok SOS jeleinek m\u0171k\xF6dni\xFCk kell, tartsd nyitva
+    a f\xFCled... Sajnos egyel\u0151re csak ennyit tehetek..."
+  lavaReCall: "Hej!, Arne elfelejtett\xE9l engem!"
+  noteBook: "Egy Jegyzetf\xFCzet, \u0151sid\u0151kb\u0151l."
+  holocon: "Holohordoz\xF3."
+  sizeler: "M\xE9retez\u0151."
+  sensor: "\xC9rdekes! Valami mozg\xE1s\xE9rz\xE9kel\u0151,vajon ki helyezte ide,
+    milyen c\xE9llal... Vigy\xE1znunk kell.  "
+  ladybug: "LadyBug! V\xE9gre oda\xE9rhett\xFCnk, Arne, A regisztr\xE1lt \xFAtvonal
+    egy biztons\xE1gos klinik\xE1ra el fog vinni  minket. "

@@ -21,6 +21,8 @@ public class ProtagonistCrouchState : ProtagonistStateBase
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator _animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (protagonist.state != this) { return;  }
+
         if (transitionToIdle)
         {
             _animator.SetFloat("speed", 0.5f);
