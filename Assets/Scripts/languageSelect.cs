@@ -8,6 +8,23 @@ public class languageSelect : MonoBehaviour
 {
     public NewLanguage[] languages;
     public GameObject languagelayout;
+    public GameObject languageSelectPanel;
+    public float gameLoadWait = 3f;
+    public AudioSource audioSource;
+    public AudioClip swordChang;
+
+    public void Start()
+    {
+        audioSource.PlayOneShot(swordChang);
+        Invoke("activateLanguagePanel", 3f);
+    }
+
+    private void activateLanguagePanel()
+    {
+        languageSelectPanel.SetActive(true);
+    }
+
+
 
     public void selectLanguage(NewLanguage language)
     {
@@ -20,7 +37,7 @@ public class languageSelect : MonoBehaviour
             }
         }
         languagelayout.SetActive(false);
-        Invoke("loadGame",3f);
+        Invoke("loadGame",gameLoadWait);
     }
 
     void loadGame()
