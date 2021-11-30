@@ -31,7 +31,9 @@ public class Protagonist : MonoBehaviour
     public ProtagonistStateBase state = null;
     public int climbDirection = 0;
     public bool gravityActive = true;
-    private Vector3 unusedVector = new Vector3(-999999, -999999, -999999);
+    public bool falling { get; private set; } = false;
+
+    private GroundFinder groundFinder;
 
     private void Awake()
     {
@@ -49,6 +51,7 @@ public class Protagonist : MonoBehaviour
         GOLog.Log();
         Move();
         var flags = controller.Move(direction);
+        GOLog.Log(true, "controller.Move flags: " + flags);
     }
 
     private void LateUpdate()
@@ -59,20 +62,28 @@ public class Protagonist : MonoBehaviour
     public Transform getLedgeChecker() {  return ledgeChecker;  }
     public Transform getGroundChecker() { return groundCheck; }
     public LayerMask getLedgeLayer() { return ledgeLayer; }
-    public void ResetTargetLedge() { targetLedge = unusedVector;  }
+    public void ResetTargetLedge() { targetLedge = Vector3.negativeInfinity;  }
     public void TurnRight() { model.rotation = Quaternion.LookRotation(new Vector3(1, 0, 0)); }
     public void TurnLeft() { model.rotation = Quaternion.LookRotation(new Vector3(-1, 0, 0)); }
 
     private void Move()
     {
         direction.x = 0;
-
+        bool tempGroundCheck = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
+        falling = false;
         // if there is any emptiness, fall down
-        if (gravityActive && (!Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer) && !controller.isGrounded))
+        if (gravityActive && (!tempGroundCheck && !controller.isGrounded))
         {
             direction.y = gravity * Time.deltaTime;
+            GOLog.Log(true, ">>>>> groundCheck.y: " + groundCheck.position.y);
+            var nextGroundPosition = GroundFinder.NextPlatformBeneath(groundCheck.position);
+            if (transform.position.y - nextGroundPosition.y > 7)
+            {
+                falling = true;
+            }
+            GOLog.Log(true, "groundCheck.y: " + groundCheck.position.y + " <<<<<<<");
         }
-        else if (targetLedge != unusedVector)  // moving toward the target ledge
+        else if (targetLedge.x != Vector3.negativeInfinity.x)  // moving toward the target ledge
         {
             // direction.x = (targetLedge.x - transform.position.x) * 0.1f; // Time.deltaTime;
             direction.x = (animator.rootRotation.y >= 0 ? 1 : -1) * moveSpeed * 0.05f;

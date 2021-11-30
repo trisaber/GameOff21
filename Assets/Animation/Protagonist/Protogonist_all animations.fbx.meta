@@ -793,7 +793,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 56
     - serializedVersion: 16
       name: Armature|lethal_fall_death_20
       takeName: Armature|lethal_fall_death_20
