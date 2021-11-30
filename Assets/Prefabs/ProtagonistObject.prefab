@@ -156,6 +156,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a3ca15a0db024fe40a8f2fc61167be0f, type: 2}
   - {fileID: 11400000, guid: 5df8e0107bee31346835ca663e74b53b, type: 2}
   - {fileID: 11400000, guid: 1570613ec5f2e9041bec5801b6842fd5, type: 2}
+  - {fileID: 11400000, guid: e52035608b4a37b4da3b6c5814223acb, type: 2}
+  - {fileID: 11400000, guid: 5dac2ee99953a434e8e31486b71497ec, type: 2}
+  - {fileID: 11400000, guid: efd4e343e0342a343aade038626d3fbf, type: 2}
   spotDistance: 3
   lavaRecallDistance: 8
   inventory: {fileID: 0}
