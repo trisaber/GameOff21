@@ -7,7 +7,8 @@ public class DialogManager : MonoBehaviour
 {
     public Text text;
     public float waitTime = 10f;
-    bool lavaFound = false;
+    public float clearTime = 10f;
+
 
     public NewLanguage[] languages;
     private NewLanguage language;
@@ -59,13 +60,13 @@ public class DialogManager : MonoBehaviour
 
     IEnumerator clearText()
     {
-        yield return new WaitForSeconds(waitTime);
         text.text = "  ";
+        yield return new WaitForSeconds(clearTime);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Collectable>() != null)
+        if (other.GetComponent<Collectable>() != null&&(inventory.lavaCheck))
         {
             switch (other.gameObject.GetComponent<Collectable>().collectableType)
             {
