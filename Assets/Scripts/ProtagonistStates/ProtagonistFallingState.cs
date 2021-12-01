@@ -26,5 +26,6 @@ public class ProtagonistFallingState : ProtagonistStateBase
 
     public override void EndOfAnimation()
     {
+                animator.Play("Armature|lethal_fall_70");
     }
 }
