@@ -27,7 +27,7 @@ public class ProtagonistGenericState : ProtagonistStateBase
     {
         GOLog.Log("Animation" + name);
 
-        CheckAnimationStateSpeed();
+        // CheckAnimationStateSpeed();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -42,18 +42,18 @@ public class ProtagonistGenericState : ProtagonistStateBase
     }
 
 
-    private void CheckAnimationStateSpeed()
-    {
-        if (changeAnimationStateSpeed.Length > 0 && Input.anyKey)
-        {
-            var ac = animator.runtimeAnimatorController as UnityEditor.Animations.AnimatorController;
-            GOLog.Log(true, "animator speed: " + ac.layers[0].stateMachine.defaultState.speed);
-            foreach (var state in ac.layers[0].stateMachine.states)
-            {
-                if (state.state.name == changeAnimationStateSpeed) { 
-                    state.state.speed = 1;
-                }
-            }
-        }
-    }
+    //private void CheckAnimationStateSpeed()
+    //{
+    //    if (changeAnimationStateSpeed.Length > 0 && Input.anyKey)
+    //    {
+    //        var ac = animator.runtimeAnimatorController as UnityEditor.Animations.AnimatorController;
+    //        GOLog.Log(true, "animator speed: " + ac.layers[0].stateMachine.defaultState.speed);
+    //        foreach (var state in ac.layers[0].stateMachine.states)
+    //        {
+    //            if (state.state.name == changeAnimationStateSpeed) { 
+    //                state.state.speed = 1;
+    //            }
+    //        }
+    //    }
+    //}
 }
