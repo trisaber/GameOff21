@@ -10,6 +10,7 @@ public class InventoryUI : MonoBehaviour
 
     public Material PickedUp;
     public bool inventory;
+    public bool lavaCheck = false;
 
     public void PickUp(Collectable collected)
     {
@@ -22,7 +23,10 @@ public class InventoryUI : MonoBehaviour
                 if(!collectable.picked)
                 {
                     collectable.GetComponent<Image>().enabled = true;
-
+                    if (collectable.collectableType==Collectable.collectable.LAVA )
+                    {
+                        lavaCheck = true;
+                    }
                   
                 collectable.picked = true;
                 Destroy(collected.gameObject);
@@ -42,4 +46,5 @@ public class InventoryUI : MonoBehaviour
         }
         return true;
     }
+
 }

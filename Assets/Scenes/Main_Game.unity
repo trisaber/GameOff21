@@ -20253,26 +20253,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1485622750}
     m_Modifications:
-    - target: {fileID: 1074365078, guid: 74e5096574878fd4d92d689f0be57c41, type: 3}
-      propertyPath: m_Range
-      value: 18.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 1074365078, guid: 74e5096574878fd4d92d689f0be57c41, type: 3}
-      propertyPath: m_Intensity
-      value: 5.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1074365078, guid: 74e5096574878fd4d92d689f0be57c41, type: 3}
-      propertyPath: m_BounceIntensity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1074365078, guid: 74e5096574878fd4d92d689f0be57c41, type: 3}
-      propertyPath: m_Shadows.m_Strength
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1074365078, guid: 74e5096574878fd4d92d689f0be57c41, type: 3}
-      propertyPath: m_Shadows.m_NormalBias
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 8220426318143179732, guid: 74e5096574878fd4d92d689f0be57c41,
         type: 3}
       propertyPath: m_Follow
@@ -42335,6 +42315,14 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 47999404}
+    - target: {fileID: 2068025611, guid: 18c993038dab84b08abc5477fdf46cdc, type: 3}
+      propertyPath: waitTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068025611, guid: 18c993038dab84b08abc5477fdf46cdc, type: 3}
+      propertyPath: clearTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2068025611, guid: 18c993038dab84b08abc5477fdf46cdc, type: 3}
       propertyPath: inventory
       value: 
