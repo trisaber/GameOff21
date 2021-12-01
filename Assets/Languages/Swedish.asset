@@ -12,16 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7555e1b52caf7e144ba3ab14d188642f, type: 3}
   m_Name: Swedish
   m_EditorClassIdentifier: 
-  languageName: 
+  languageName: swedish
   isSelected: 0
-  firstCall: 
-  standUpCall: 
-  briefing1: 
-  briefing2: 
-  briefing3: 
-  lavaReCall: 
-  noteBook: 
-  holocon: 
-  sizeler: 
-  sensor: 
-  ladybug: 
+  firstCall: "Arne?! M\xE5r du bra? Jag troratt du lider av ettstort trauma; mina
+    sensoreruppt\xE4cker inga benbrottellerbl\xF6dningar trots att vi \xF6verlevdeenstorolycka....
+    Arne?! Kan du h\xF6ra  mig?"
+  standUpCall: "Tack vare den heligaplattan\xE4r du okej! Jag  anv\xE4nde  n\xE4stanhela
+    min energif\xF6ratth\xE5llainsekterna bort fr\xE5n dig."
+  briefing1: "Mitt namn\xE4r LAVA, jag \xE4r din virtuellaassistent, det finnsingenallvarligskadai
+    din kropp, men du kraschadep\xE5  markenganskah\xE5rt. "
+  briefing2: "Vissa symtomkanf\xF6rekomma...bland annatminnesf\xF6rlust, f\xF6rvirringochkonfusion...
+    Jag m\xE5stesamlaihop de spriddagrejornaoch ta dig till dittfordonomedelbart."
+  briefing3: "Objekts S.O.S. signaler b\xF6r  fungera. Var f\xF6rsiktig...det \xE4rallt
+    jag kang\xF6ra just nu, tyv\xE4rr..."
+  lavaReCall: "Hej! Arne du gl\xF6mdemig!.."
+  noteBook: "Enanteckningsbokfr\xE5n  gamlatider."
+  holocon: "Holob\xE4rare. "
+  sizeler: Dimensionerare
+  sensor: "Intressant! N\xE5gontypav  r\xF6relsedetektor, jag undrarvemsomsatt den
+    h\xE4roch vadsyftet var... Vi m\xE5stevaraf\xF6rsiktiga."
+  ladybug: "LadyBug! \xC4ntligen\xE4r vi framme  Arne, den registreradev\xE4genskulle 
+    ta oss till ens\xE4kerklinik."
