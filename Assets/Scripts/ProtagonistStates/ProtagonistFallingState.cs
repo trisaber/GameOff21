@@ -26,5 +26,18 @@ public class ProtagonistFallingState : ProtagonistStateBase
 
     public override void EndOfAnimation()
     {
+                animator.Play("Armature|lethal_fall_70");
+/*
+        var ac = animator.runtimeAnimatorController as UnityEditor.Animations.AnimatorController;
+        foreach (var temp in ac.layers[0].stateMachine.states)
+        {
+            GOLog.Log(true, temp.state.name);
+            if (temp.state.name == "Armature|lethal_fall_70")
+            {
+                GOLog.Log(true, "found the searched state");
+
+            }
+        }
+*/
     }
 }
