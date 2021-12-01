@@ -1244,6 +1244,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: languageLayout
       objectReference: {fileID: 0}
+    - target: {fileID: 2595760317933369721, guid: cc46d8028bb25fa46bc5602f682bd57d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2595760319185861744, guid: cc46d8028bb25fa46bc5602f682bd57d,
         type: 3}
       propertyPath: m_AnchorMax.y
