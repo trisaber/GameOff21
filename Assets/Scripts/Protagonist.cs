@@ -34,9 +34,12 @@ public class Protagonist : MonoBehaviour
     public bool falling { get; private set; } = false;
 
     private GroundFinder groundFinder;
+    private Collector collector;
+    private int counter = 50;
 
     private void Awake()
     {
+        collector = GetComponentInParent<Collector>();
         ResetTargetLedge();
 
         var ac = animator.runtimeAnimatorController as UnityEditor.Animations.AnimatorController;
@@ -53,6 +56,7 @@ public class Protagonist : MonoBehaviour
     private void Update()
     {
         GOLog.Log();
+        End();
         Move();
         var flags = controller.Move(direction);
         GOLog.Log("controller.Move flags: " + flags);
@@ -69,6 +73,17 @@ public class Protagonist : MonoBehaviour
     public void ResetTargetLedge() { targetLedge = Vector3.negativeInfinity;  }
     public void TurnRight() { model.rotation = Quaternion.LookRotation(new Vector3(1, 0, 0)); }
     public void TurnLeft() { model.rotation = Quaternion.LookRotation(new Vector3(-1, 0, 0)); }
+
+    private bool End()
+    {
+        if (collector.isLadybug() && collector.ToPick.picked)
+        {
+            gameObject.SetActive(counter-- != 0);
+            return true;
+        }
+
+        return false;
+    }
 
     private void Move()
     {
