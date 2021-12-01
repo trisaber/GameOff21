@@ -15904,12 +15904,12 @@ PrefabInstance:
     - target: {fileID: 1705063783697764037, guid: c9abebd7eb65e354fb54353d83786e26,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.024921834
+      value: 0.024921842
       objectReference: {fileID: 0}
     - target: {fileID: 1705063783697764037, guid: c9abebd7eb65e354fb54353d83786e26,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0016530417
+      value: -0.0016530422
       objectReference: {fileID: 0}
     - target: {fileID: 1705063783697764037, guid: c9abebd7eb65e354fb54353d83786e26,
         type: 3}
@@ -21066,12 +21066,12 @@ PrefabInstance:
     - target: {fileID: 8220426318143179733, guid: 74e5096574878fd4d92d689f0be57c41,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.024921834
+      value: 0.024921842
       objectReference: {fileID: 0}
     - target: {fileID: 8220426318143179733, guid: 74e5096574878fd4d92d689f0be57c41,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0016530417
+      value: -0.0016530422
       objectReference: {fileID: 0}
     - target: {fileID: 8220426318143179733, guid: 74e5096574878fd4d92d689f0be57c41,
         type: 3}
@@ -29422,6 +29422,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bstep_v2rightpref (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8803888756826017804, guid: c93f758ddb12f844aa3dcd171c883711,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2501438
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c93f758ddb12f844aa3dcd171c883711, type: 3}
