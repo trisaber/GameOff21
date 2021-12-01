@@ -64,4 +64,6 @@ public class ProtagonistStateBase : StateMachineBehaviour
     public virtual void StartOfAnimation() { }
     public virtual void StartOfAction() { }
     public virtual void EndOfAction() { }
+    public virtual void SoundOfAction() { }
+
 }

@@ -48,6 +48,12 @@ public class ProtagonistMovementState : ProtagonistStateBase
         GOLog.Log();
     }
 
+
+    public override void SoundOfAction()
+    {
+        // TODO ilham
+    }
+
     public override void EndOfAnimation()
     {
         endOfAnimation = true;
