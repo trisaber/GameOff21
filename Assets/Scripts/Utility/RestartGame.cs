@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class RestartGame : MonoBehaviour
 {
@@ -21,7 +23,7 @@ public class RestartGame : MonoBehaviour
 
             if ((Time.time - lastTapTime) <= tapSpeed)
             {
-                // TODO tolga restart the game
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
 
             lastTapTime = Time.time;
