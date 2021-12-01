@@ -36,4 +36,12 @@ public class ProtagonistAnimationSync : MonoBehaviour
         // GOLog.Log();
         player.state.EndOfAction();
     }
+
+    public void AnimationSound(int animationId)
+    {
+        // GOLog.Log();
+        player.state.SoundOfAction();
+    }
+
+
 }
