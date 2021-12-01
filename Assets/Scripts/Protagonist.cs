@@ -38,6 +38,10 @@ public class Protagonist : MonoBehaviour
     private void Awake()
     {
         ResetTargetLedge();
+
+        var ac = animator.runtimeAnimatorController as UnityEditor.Animations.AnimatorController;
+        GOLog.Log(true, "animator speed: " + ac.layers[0].stateMachine.defaultState.speed);
+        ac.layers[0].stateMachine.defaultState.speed = 0;
     }
 
     private void Start()
