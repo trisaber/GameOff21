@@ -33,7 +33,10 @@ public class ProtagonistTakeObjectState : ProtagonistStateBase
 
     public override void EndOfAnimation()
     {
-        ChangeState(animator, ProtagonistStates.OnGround);
+        if (!collector.isLadybug())
+        {
+            ChangeState(animator, ProtagonistStates.OnGround);
+        }
     }
 
 }

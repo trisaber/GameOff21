@@ -15,8 +15,5 @@ public class Collectable : MonoBehaviour
     };
     public collectable collectableType;
     public bool picked=false;
-    
-
-
 
 }

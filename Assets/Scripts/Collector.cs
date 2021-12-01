@@ -5,7 +5,7 @@ using UnityEngine;
 public class Collector : MonoBehaviour
 {
     public InventoryUI inventoryUI;
-    private Collectable ToPick=null;
+    public Collectable ToPick { get; private set; } = null;
     private Protagonist protagonist = null;
 
     public bool CanPickUpObject()
@@ -13,9 +13,18 @@ public class Collector : MonoBehaviour
         return (ToPick != null);
     }
 
+    public bool isLadybug()
+    {
+        return (ToPick != null && ToPick.collectableType == Collectable.collectable.ladybug);
+    }
+
     public void PickUp()
     {
-        if (ToPick != null)
+        if (isLadybug())
+        {
+            ToPick.picked = true;
+        }
+        else if (ToPick != null)
         {
             inventoryUI.PickUp(ToPick);
         }
@@ -25,7 +34,7 @@ public class Collector : MonoBehaviour
     {
         if (other.GetComponent<Collectable>()!=null)
         {
-        ToPick = other.gameObject.GetComponent<Collectable>();
+            ToPick = other.gameObject.GetComponent<Collectable>();
         }
     }
 
