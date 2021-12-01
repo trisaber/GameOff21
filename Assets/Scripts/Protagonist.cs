@@ -51,7 +51,7 @@ public class Protagonist : MonoBehaviour
         GOLog.Log();
         Move();
         var flags = controller.Move(direction);
-        GOLog.Log(true, "controller.Move flags: " + flags);
+        GOLog.Log("controller.Move flags: " + flags);
     }
 
     private void LateUpdate()
@@ -75,13 +75,13 @@ public class Protagonist : MonoBehaviour
         if (gravityActive && (!tempGroundCheck && !controller.isGrounded))
         {
             direction.y = gravity * Time.deltaTime;
-            GOLog.Log(true, ">>>>> groundCheck.y: " + groundCheck.position.y);
+            // GOLog.Log(true, ">>>>> groundCheck.y: " + groundCheck.position.y);
             var nextGroundPosition = GroundFinder.NextPlatformBeneath(groundCheck.position);
             if (transform.position.y - nextGroundPosition.y > 7)
             {
                 falling = true;
             }
-            GOLog.Log(true, "groundCheck.y: " + groundCheck.position.y + " <<<<<<<");
+            // GOLog.Log(true, "groundCheck.y: " + groundCheck.position.y + " <<<<<<<");
         }
         else if (targetLedge.x != Vector3.negativeInfinity.x)  // moving toward the target ledge
         {
